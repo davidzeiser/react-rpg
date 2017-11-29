@@ -1,0 +1,60 @@
+{
+    "Areas": [
+        {
+            "name": "Town",
+            "header": "You are in the town"
+        },
+        {
+            "name": "Inn",
+            "header": "Welcome to the inn. Rest to recover health."
+        },
+        {
+            "name": "Shop",
+            "header": "You can buy or sell things here."
+        },
+        {
+            "name": "Select an Area",
+            "header": "Pick a location to travel too"
+        },
+        {
+            "name": "Battle",
+            "header": "You are in the town"
+        },
+        {
+            "name": "You died",
+            "header": "You are in the town"
+        }
+
+    ],
+    
+    "Items": {
+        "Weapons": [
+            {
+                "name": "Wooden Stick",
+                "price": 5,
+                "value": 1
+            },
+            {
+                "name": "Iron Sword",
+                "price": 10,
+                "value": 2
+            }
+        ],
+        "Armor": [
+            {
+                "name": "Leather Tunic",
+                "price": 5,
+                "value": 1
+            }
+        ],
+        "Head": [
+            {
+                "name": "Leather Cap",
+                "price": 5,
+                "value": 1
+            }
+        ]
+
+    }
+
+}
