@@ -76,19 +76,19 @@ class CharacterDrawer extends Component {
                         Weapon
                     </Typography>
                     <Typography type="title" gutterBottom>
-                        {constants.Items.Weapons[this.props.characterData.equipped[0]].name}
+                        {constants.Items[this.props.characterData.equipped[0]].name}
                     </Typography>
                     <Typography type="caption">
                         Armor
                     </Typography>
                     <Typography type="title" gutterBottom>
-                        {constants.Items.Armor[this.props.characterData.equipped[1]].name}
+                        {constants.Items[this.props.characterData.equipped[1]].name}
                     </Typography>
                     <Typography type="caption">
                         Head
                     </Typography>
                     <Typography type="title" gutterBottom>
-                        {constants.Items.Head[this.props.characterData.equipped[2]].name}
+                        {constants.Items[this.props.characterData.equipped[2]].name}
                     </Typography>
                     </Paper>
                     

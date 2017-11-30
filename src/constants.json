@@ -24,37 +24,107 @@
             "name": "You died",
             "header": "You are in the town"
         }
-
     ],
-    
-    "Items": {
-        "Weapons": [
-            {
-                "name": "Wooden Stick",
-                "price": 5,
-                "value": 1
-            },
-            {
-                "name": "Iron Sword",
-                "price": 10,
-                "value": 2
+    "Items": [
+        {
+            "name": "None",
+            "price": 0,
+            "value": 0,
+            "slot": "weapon body head"
+        },
+        
+        {
+            "name": "Wooden Stick",
+            "price": 5,
+            "value": 1,
+            "slot": "weapon"
+        },
+        {
+            "name": "Iron Sword",
+            "price": 10,
+            "value": 2,
+            "type": "weapon"
+        },
+        
+        {
+            "name": "Leather Tunic",
+            "price": 5,
+            "value": 1,
+            "slot": "body"
+        },
+        
+        {
+            "name": "Leather Cap",
+            "price": 5,
+            "value": 1,
+            "slot": "head"
+        }
+    ],
+    "Enemies": [
+        {
+            "name": "Boar", 
+            "level": 1,
+            "attack": 1, 
+            "defense": 1,
+            "health": 25,
+            "loot": {
+                "gold": 10,
+                "items": [
+                    {
+                        "id": 2,
+                        "droprate": 5
+                    },
+                    {
+                        "id": 3,
+                        "droprate": 40
+                    },
+                    {
+                        "id": 4,
+                        "droprate": 25
+                    }
+                ]
             }
-        ],
-        "Armor": [
-            {
-                "name": "Leather Tunic",
-                "price": 5,
-                "value": 1
+        },
+        {
+            "name": "Wolf", 
+            "level": 2,
+            "attack": 4, 
+            "defense": 0,
+            "heatlh": 25,
+            "loot": {
+                "gold": 15,
+                "items": [
+                    {
+                        "id": 2,
+                        "droprate": 15
+                    },
+                    {
+                        "id": 3,
+                        "droprate": 60
+                    },
+                    {
+                        "id": 4,
+                        "droprate": 45
+                    }
+                ]
             }
-        ],
-        "Head": [
-            {
-                "name": "Leather Cap",
-                "price": 5,
-                "value": 1
+            
+        },
+        {
+            "name": "Bear", 
+            "level": 4,
+            "attack": 2, 
+            "defense": 2,
+            "health": 50,
+            "loot": {
+                "gold": 25,
+                "items": [
+                    {
+                        "id": 2,
+                        "droprate": 40
+                    }
+                ]
             }
-        ]
-
-    }
-
+        }
+    ]
 }

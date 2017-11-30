@@ -7,33 +7,34 @@ import Button from 'material-ui/Button';
 import './welcome.css'
 
 const styles = theme => ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
-      width: 200,
-    },
-    menu: {
-      width: 200,
-    },
-  });
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
+  },
+  menu: {
+    width: 200,
+  },
+});
 
 const character = {
-    name: '',    
-    equipped: [0,0,0],
-    health: 100,
-    maxHealth: 100,
-    gold: 50
+  name: '',
+  equipped: [1, 3, 4],
+  curhealth: 100,
+  maxHealth: 100,
+  gold: 50,
+  exp: 0
 }
 
 class WelcomeScreen extends Component {
   state = {
-      name: ''      
+    name: ''
   }
-  
+
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
@@ -42,31 +43,31 @@ class WelcomeScreen extends Component {
 
   handleSubmit = () => {
 
-    character.name  = this.state.name;
+    character.name = this.state.name;
     this.props.startGame(character);
   }
-  
+
 
   render() {
     const { classes } = this.props;
     return (
-        <div className="welcome">
+      <div className="welcome">
         <TextField
           id="name"
           label="Name"
           className={classes.textField}
           value={this.state.name}
           onChange={this.handleChange('name')}
-          margin="normal"          
-        />        
+          margin="normal"
+        />
         <Button onClick={this.handleSubmit} color="primary">Submit</Button>
-        </div>
+      </div>
     );
   }
 }
 
 WelcomeScreen.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
+  classes: PropTypes.object.isRequired,
+};
+
 export default withStyles(styles)(WelcomeScreen);
