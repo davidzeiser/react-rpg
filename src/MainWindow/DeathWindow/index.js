@@ -15,18 +15,14 @@ const styles = {
 export default class ShopWindow extends Component {
 
     componentWillMount() {        
-        log.Messages.push({text: constants.Areas[2].enter})
-    }
+        log.Messages.push({text: constants.Areas[7].enter})
+    }    
+
     
 
-    leave = () => {
-        log.Messages.push({text: constants.Areas[2].exit})
-        this.props.exitButton()
-    }
-
     render() {
-        const name = constants.Areas[2].name
-        const header = constants.Areas[2].header
+        const name = constants.Areas[7].name
+        const header = constants.Areas[7].header
         return (
 
             <div>
@@ -39,14 +35,8 @@ export default class ShopWindow extends Component {
                     </Typography>
                     <Divider />
                     <MessageLog />
-                    <Button raised color="primary" style={styles.button}>
-                        Buy
-                    </Button>
-                    <Button raised color="primary" style={styles.button}>
-                        Sell
-                    </Button>
-                    <Button raised color="primary" style={styles.button} onClick={this.leave}>
-                        Leave
+                    <Button raised color="primary" style={styles.button} onClick={this.props.restartGame}>
+                        Restart
                     </Button>
                 </div>
                 <div>

@@ -6,23 +6,33 @@
         },
         {
             "name": "Inn",
-            "header": "Welcome to the inn. Rest to recover health."
+            "header": "Welcome to the Inn. Rest to recover health.",
+            "enter": "You enter the Inn.",
+            "exit": "You leave the Inn."
         },
         {
             "name": "Shop",
-            "header": "You can buy or sell things here."
+            "header": "You can buy or sell things here.",
+            "enter": "You are standing in the shop.",
+            "exit": "You leave the shop and head back to the center of town."
         },
         {
-            "name": "Select an Area",
-            "header": "Pick a location to travel too"
+            "name": "Road",
+            "header": "Pick a location to travel too.",
+            "enter": "You are standing on the open road. To the left is a forest, ahead are mountains and to the right is a castle. Where do you want to go?"
         },
         {
             "name": "Forest",
-            "header": "You are in the town"
+            "header": "Somewhere in the forest",
+            "enter": "You make your way into the vast forest.",
+            "exit": "You make your way back to town from the forest."
+            
         },
         {
             "name": "Mountains",
-            "header": "You are in the town"
+            "header": "You are in the town.",
+            "enter": "You embark to the foothill of the mountain.",
+            "exit": "You leave the mountain and head back to town."
         },
         {
             "name": "Castle",
@@ -30,7 +40,8 @@
         },
         {
             "name": "You died",
-            "header": "You are in the town"
+            "header": "R.I.P",
+            "enter": "You are dead."
         }
     ],
     "Items": [
@@ -74,7 +85,7 @@
             "level": 1,
             "attack": 3, 
             "defense": 0,
-            "health": 25,
+            "health": 3,
             "loot": {
                 "gold": 10,
                 "items": [
@@ -98,9 +109,9 @@
             "level": 2,
             "attack": 4, 
             "defense": 0,
-            "health": 25,
+            "health": 10,
             "loot": {
-                "gold": 15,
+                "gold": 5,
                 "items": [
                     {
                         "id": 2,
@@ -122,8 +133,8 @@
             "name": "Bear", 
             "level": 4,
             "attack": 5, 
-            "defense": 1,
-            "health": 50,
+            "defense": 0,
+            "health": 10,
             "loot": {
                 "gold": 25,
                 "items": [

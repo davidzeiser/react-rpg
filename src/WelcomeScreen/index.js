@@ -21,7 +21,7 @@ const styles = theme => ({
   },
 });
 
-const character = {
+let character = {
   name: '',
   equipped: [1, 3, 4],
   curHealth: 100,
@@ -33,6 +33,17 @@ const character = {
 class WelcomeScreen extends Component {
   state = {
     name: ''
+  }
+
+  componentDidMount() {
+    character = {
+      name: '',
+      equipped: [1, 3, 4],
+      curHealth: 100,
+      maxHealth: 100,
+      gold: 50,
+      exp: 0
+    }
   }
 
   handleChange = name => event => {

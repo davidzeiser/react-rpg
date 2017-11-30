@@ -3,6 +3,8 @@ import Typography from 'material-ui/Typography';
 import constants from '../../constants.json';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
+import MessageLog from '../../MessageLog'
+import log from '../../log.json';
 
 const styles = {
     "button": {
@@ -11,6 +13,11 @@ const styles = {
 }
 
 export default class AdventureWindow extends Component {
+
+    componentWillMount() {        
+        log.Messages.push({text: constants.Areas[3].enter})
+    }
+    
 
     render() {
         const name = constants.Areas[3].name
@@ -26,6 +33,7 @@ export default class AdventureWindow extends Component {
                         {header}
                     </Typography>
                     <Divider />
+                    <MessageLog />
                     <Button raised color="primary" style={styles.button} onClick={this.props.easyButton}>
                         Forest (easy)
                     </Button>
@@ -34,10 +42,7 @@ export default class AdventureWindow extends Component {
                     </Button>
                     <Button raised color="primary" style={styles.button} onClick={this.props.hardButton} disabled>
                         Castle (boss)
-                    </Button>
-                    <Button raised color="primary" style={styles.button} onClick={this.props.exitButton}>
-                        Go Back
-                    </Button>                    
+                    </Button>                                     
                 </div>
                 <div>
                 </div>
