@@ -15,7 +15,6 @@ function getRandomInt(min, max) {
 }
 
 export default class BattleWindow extends Component {
-    
 
     getArmorValue = () => {
         let armor = 0;
@@ -30,6 +29,11 @@ export default class BattleWindow extends Component {
         return constants.Items[this.props.characterData.equipped[0]].value;
     }
 
+    componentWillMount() {
+        const enemy = this.getEnemy();
+        this.battleLog = this.getBattleResults(enemy);
+        this.props.updateCharacter(this.props.characterData)
+    }
     getBattleResults = (e) => {
 
         const log = [];
@@ -54,11 +58,11 @@ export default class BattleWindow extends Component {
                 else {
                     log.push(`${enemy.name} blocks your attack!`)
                     blocks++;
-                 }
+                }
             }
             else
                 log.push(`${player.name} misses their attack!`)
-            
+
             if (Math.random() * 100 < 95 - armor) {
                 damage = Math.max(0, enemy.attack - armor)
                 if (damage > 0) {
@@ -71,52 +75,43 @@ export default class BattleWindow extends Component {
                 }
             } else
                 log.push(`${enemy.name} misses their attack!`)
-            
+
             // if(blocks > 10)
             // break;
         }
-        if(player.curHealth > 0) {
+        if (player.curHealth > 0) {
             log.push(`${player.name} has deafeated ${enemy.name}!!`)
             player.gold = player.gold + enemy.loot.gold;
-            log.push(`You loot ${enemy.loot.gold} gold coins.`) 
+            log.push(`You loot ${enemy.loot.gold} gold coins.`)
         } else {
             log.push(`${enemy.name} has slain ${player.name}!!`)
         }
-        
-            
-        return (
-            <div>
-                {log.map((entry,id) => <Paper key={id}>  
-                    <Typography type="body1">
-                        {entry}
-                    </Typography>
-                    </Paper>)}
-            </div>
-        )
+
+
+        return log;
+
     }
 
     getEnemy = () => {
         let enemies = [];
         switch (this.props.difficulty) {
             case 0:
-                constants.Enemies.map((enemy) => { if (enemy.level <= 5) enemies.push(enemy); return enemy})
+                constants.Enemies.map((enemy) => { if (enemy.level <= 5) enemies.push(enemy); return enemy })
                 break;
             case 1:
-                constants.Enemies.map((enemy) => { if (enemy.level > 5 && enemy.level <= 10) enemies.push(enemy); return enemy})
+                constants.Enemies.map((enemy) => { if (enemy.level > 5 && enemy.level <= 10) enemies.push(enemy); return enemy })
                 break;
             case 2:
-                constants.Enemies.map((enemy) => { if (enemy.level > 15) enemies.push(enemy); return enemy})
+                constants.Enemies.map((enemy) => { if (enemy.level > 15) enemies.push(enemy); return enemy })
                 break;
         }
         return enemies[getRandomInt(0, enemies.length - 1)]
     }
 
     render() {
-        const dif = parseInt(this.props.difficulty);
+        const dif = this.props.difficulty;
         const name = constants.Areas[4 + dif].name;
         const header = constants.Areas[4 + dif].header;
-        const enemy = this.getEnemy();
-        const battleLog = this.getBattleResults(enemy);
         return (
             <div style={{ textAlign: 'center', margin: '20px 0 0 260px' }}>
                 <Typography type="display2">
@@ -127,8 +122,14 @@ export default class BattleWindow extends Component {
                 </Typography>
                 <Divider />
 
-                {battleLog}
-                <Button raised color="primary" style={styles.button} onClick={this.props.exitButton}>
+                <div>
+                    {this.battleLog.map((entry, id) => <Paper key={id}>
+                        <Typography type="body1">
+                            {entry}
+                        </Typography>
+                    </Paper>)}
+                </div>
+                <Button raised color="primary" style={styles.button} onClick={this.props.keepGoing}>
                     Keep Adventuring
                 </Button>
                 <Button raised color="primary" style={styles.button} onClick={this.props.exitButton}>

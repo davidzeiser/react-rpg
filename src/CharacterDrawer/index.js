@@ -38,9 +38,15 @@ const style = {
 };
   
 
-class CharacterDrawer extends Component {
+class CharacterDrawer extends Component {   
 
-
+    getArmorValue = () => {
+        let armor = 0;
+        for (let i = 1; i < 3; i++) {
+            armor += constants.Items[this.props.characterData.equipped[i]].value;
+        }
+        return armor;
+    }
 
     render() {
 
@@ -69,6 +75,9 @@ class CharacterDrawer extends Component {
                     >
 
                     </LinearProgress>
+                    <Typography type="caption">
+                        {`Gold: ${this.props.characterData.gold}    Exp: ${this.props.characterData.exp}    Armor: ${this.getArmorValue()}`}
+                    </Typography>
                     </Paper>
                     <Divider />
                     <Paper style={style.paper}>

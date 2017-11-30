@@ -39,6 +39,7 @@ export default class MainWindow extends Component {
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 updateCharacter={this.props.updateCharacter}
                 characterData={this.props.characterData}
+                keepGoing={() => this.props.changeState(this.areas.BATTLE2)}
             />
                 break;
             case this.areas.BATTLE2: content = <BattleWindow
@@ -46,13 +47,17 @@ export default class MainWindow extends Component {
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 updateCharacter={this.props.updateCharacter}
                 characterData={this.props.characterData}
+                keepGoing={() => this.props.changeState(this.areas.BATTLE2)}
             />
                 break;
             case this.areas.BATTLE3: content = <BattleWindow
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 difficulty={2}
                 updateCharacter={this.props.updateCharacter}
-                characterData={this.props.characterData} />
+                characterData={this.props.characterData} 
+                keepGoing={() => this.props.changeState(this.areas.BATTLE3)}
+                />
+                
                 break;
         }
         return (
