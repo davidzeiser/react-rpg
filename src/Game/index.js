@@ -9,8 +9,10 @@ const gameStates = {
     INN: 1,
     SHOP: 2,
     AREASELECT: 3,
-    BATTLE: 4,
-    GAMEOVER: 5
+    BATTLE1: 4,
+    BATTLE2: 5,
+    BATTLE3: 6,
+    GAMEOVER: 7
 }
 
 export default class Game extends Component {
@@ -24,12 +26,17 @@ export default class Game extends Component {
     this.setState({gameState: state})
   }
 
+  handleCharacterUpdate = (char) =>
+  {
+    this.setState({character: char})
+  }
+
   render() {
     const charData = this.state.character
     return (
     <div>       
       <CharacterDrawer characterData={charData} />
-      <MainWindow characterData={charData} gameState={this.state.gameState} states={gameStates} changeState={this.changeState}/>      
+      <MainWindow characterData={charData} gameState={this.state.gameState} states={gameStates} changeState={this.changeState} updateCharacter={this.handleCharacterUpdate}/>      
       <ActionBar onClick={this.handleAction} gameState={this.state.gameState}/>
     </div>
     );

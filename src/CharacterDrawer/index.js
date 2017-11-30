@@ -63,7 +63,7 @@ class CharacterDrawer extends Component {
 
                     <LinearProgress 
                         style={style.healthbar}
-                        value={50}
+                        value={this.props.characterData.curHealth}
                         color='accent'
                         mode="determinate"
                     >
@@ -76,19 +76,19 @@ class CharacterDrawer extends Component {
                         Weapon
                     </Typography>
                     <Typography type="title" gutterBottom>
-                        {constants.Items[this.props.characterData.equipped[0]].name}
+                        {`${constants.Items[this.props.characterData.equipped[0]].name}   +${constants.Items[this.props.characterData.equipped[0]].value}`}
                     </Typography>
                     <Typography type="caption">
                         Armor
                     </Typography>
                     <Typography type="title" gutterBottom>
-                        {constants.Items[this.props.characterData.equipped[1]].name}
+                        {`${constants.Items[this.props.characterData.equipped[1]].name}   +${constants.Items[this.props.characterData.equipped[1]].value}`}
                     </Typography>
                     <Typography type="caption">
                         Head
                     </Typography>
                     <Typography type="title" gutterBottom>
-                        {constants.Items[this.props.characterData.equipped[2]].name}
+                        {`${constants.Items[this.props.characterData.equipped[2]].name}   +${constants.Items[this.props.characterData.equipped[2]].value}`}
                     </Typography>
                     </Paper>
                     

@@ -26,14 +26,17 @@ export default class AdventureWindow extends Component {
                         {header}
                     </Typography>
                     <Divider />
-                    <Button raised color="primary" style={styles.button}>
+                    <Button raised color="primary" style={styles.button} onClick={this.props.easyButton}>
                         Forest (easy)
                     </Button>
-                    <Button raised color="primary" style={styles.button}>
+                    <Button raised color="primary" style={styles.button} onClick={this.props.medButton} disabled>
                         Mountains (hard)
                     </Button>
-                    <Button raised color="primary" style={styles.button}>
+                    <Button raised color="primary" style={styles.button} onClick={this.props.hardButton} disabled>
                         Castle (boss)
+                    </Button>
+                    <Button raised color="primary" style={styles.button} onClick={this.props.exitButton}>
+                        Go Back
                     </Button>                    
                 </div>
                 <div>

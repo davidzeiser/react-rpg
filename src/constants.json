@@ -17,7 +17,15 @@
             "header": "Pick a location to travel too"
         },
         {
-            "name": "Battle",
+            "name": "Forest",
+            "header": "You are in the town"
+        },
+        {
+            "name": "Mountains",
+            "header": "You are in the town"
+        },
+        {
+            "name": "Castle",
             "header": "You are in the town"
         },
         {
@@ -64,8 +72,8 @@
         {
             "name": "Boar", 
             "level": 1,
-            "attack": 1, 
-            "defense": 1,
+            "attack": 3, 
+            "defense": 0,
             "health": 25,
             "loot": {
                 "gold": 10,
@@ -90,7 +98,7 @@
             "level": 2,
             "attack": 4, 
             "defense": 0,
-            "heatlh": 25,
+            "health": 25,
             "loot": {
                 "gold": 15,
                 "items": [
@@ -113,8 +121,8 @@
         {
             "name": "Bear", 
             "level": 4,
-            "attack": 2, 
-            "defense": 2,
+            "attack": 5, 
+            "defense": 1,
             "health": 50,
             "loot": {
                 "gold": 25,

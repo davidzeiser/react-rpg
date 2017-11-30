@@ -24,7 +24,7 @@ const styles = theme => ({
 const character = {
   name: '',
   equipped: [1, 3, 4],
-  curhealth: 100,
+  curHealth: 100,
   maxHealth: 100,
   gold: 50,
   exp: 0

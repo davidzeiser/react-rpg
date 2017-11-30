@@ -6,34 +6,54 @@ import TownWindow from './TownWindow';
 import ShopWindow from './ShopWindow';
 import InnWindow from './InnWindow';
 import AdventureWindow from './AdventureWindow';
+import BattleWindow from './BattleWindow';
 
 export default class MainWindow extends Component {
-    states = this.props.states
-    
-
-    goShop = () =>
-    {
-
-    }
-
+    areas = this.props.states
     render() {
         let content = '';
         switch (this.props.gameState) {
-            case this.states.TOWN: content = <TownWindow 
-            shopButton={() => this.props.changeState(this.states.SHOP)} 
-            innButton={() => this.props.changeState(this.states.INN)}
-            areaButton={() => this.props.changeState(this.states.AREASELECT)}/>
-            break;
-            case this.states.INN: content = <InnWindow 
-            exitButton={() => this.props.changeState(this.states.TOWN)}
+            case this.areas.TOWN: content = <TownWindow
+                shopButton={() => this.props.changeState(this.areas.SHOP)}
+                innButton={() => this.props.changeState(this.areas.INN)}
+                areaButton={() => this.props.changeState(this.areas.AREASELECT)} />
+                break;
+            case this.areas.INN: content = <InnWindow
+                exitButton={() => this.props.changeState(this.areas.TOWN)}
             />
-            break;
-            case this.states.SHOP: content = <ShopWindow 
-            exitButton={() => this.props.changeState(this.states.TOWN)}/>
-            break;
-            case this.states.AREASELECT: content = <AdventureWindow />
-            break;
-                
+                break;
+            case this.areas.SHOP: content = <ShopWindow
+                exitButton={() => this.props.changeState(this.areas.TOWN)} />
+                break;
+            case this.areas.AREASELECT: content = <AdventureWindow
+                exitButton={() => this.props.changeState(this.areas.TOWN)}
+                easyButton={() => this.props.changeState(this.areas.BATTLE1)}
+                medButton={() => this.props.changeState(this.areas.BATTLE2)}
+                hardButton={() => this.props.changeState(this.areas.BATTLE3)}
+            />
+                break;
+
+                //todo: make these one thing
+            case this.areas.BATTLE1: content = <BattleWindow
+                difficulty={0}
+                exitButton={() => this.props.changeState(this.areas.TOWN)}
+                updateCharacter={this.props.updateCharacter}
+                characterData={this.props.characterData}
+            />
+                break;
+            case this.areas.BATTLE2: content = <BattleWindow
+                difficulty={1}
+                exitButton={() => this.props.changeState(this.areas.TOWN)}
+                updateCharacter={this.props.updateCharacter}
+                characterData={this.props.characterData}
+            />
+                break;
+            case this.areas.BATTLE3: content = <BattleWindow
+                exitButton={() => this.props.changeState(this.areas.TOWN)}
+                difficulty={2}
+                updateCharacter={this.props.updateCharacter}
+                characterData={this.props.characterData} />
+                break;
         }
         return (
             // other windows
