@@ -39,6 +39,7 @@ class WelcomeScreen extends Component {
     character = {
       name: '',
       equipped: [1, 3, 4],
+      inventory: [2],
       curHealth: 100,
       maxHealth: 100,
       gold: 50,

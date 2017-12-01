@@ -36,8 +36,10 @@ export default class Game extends Component {
   render() {
     const charData = this.state.character
     return (
-      <div>
-        <CharacterDrawer characterData={charData} />
+      <div style={{display: 'flex'}}>
+        <div>
+        <CharacterDrawer characterData={charData} updateCharacter={this.handleCharacterUpdate}/>
+        </div>
         <MainWindow
           characterData={charData}
           gameState={this.state.gameState}

@@ -33,7 +33,7 @@ export default class TownWindow extends Component {
                         <Button raised color="primary" onClick={this.props.shopButton}>
                             Shop
                         </Button>
-                        <Button raised color="primary" onClick={this.props.innButton}>
+                        <Button raised color="primary"  onClick={this.props.innButton}>
                             Inn
                         </Button>
                         <Button raised color="primary" onClick={this.props.areaButton}>

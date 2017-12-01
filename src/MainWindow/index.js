@@ -67,7 +67,7 @@ export default class MainWindow extends Component {
                 break;
         }
         return (
-            <div>
+            <div style={{  width:"100%" }}>
                 {content}
             </div>
         );

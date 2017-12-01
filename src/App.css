@@ -1,6 +1,9 @@
+body{
+  margin:0;
+}
 .buttonBar{
   position: absolute; 
-  left: 260px ; right: 0; bottom: 0px; 
+  left: 0; right: 0; bottom: 0px; 
 }
 
 .buttonBar button{
@@ -9,13 +12,35 @@
 
 .area{
   text-align: center;
-  margin: 10px 0 0 260px
+  width:100%;  
+  margin: 10px 0 0 0
 }
 
-.messageLog {
-  width: 95%;  
+.messageLog { 
+  width:100%;
   height: 70vh;
   overflow-y: auto;
-  margin: 10px auto;
+  
   text-align: left;
+}
+
+
+.itemValue{
+  padding:4px;
+  height:40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.itemCaption{
+  padding:4px 0 0 4px;
+}
+
+.itemName{
+  padding: 0 0 4px 4px
+}
+
+.inventoryItem{
+  width:216px;
+  margin-left:12px;
 }

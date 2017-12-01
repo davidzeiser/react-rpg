@@ -24,9 +24,9 @@ export default class BattleWindow extends Component {
         return armor;
     }
 
-    getDamageValue = () => 
+    getDamageValue = () =>
         constants.Items[this.props.characterData.equipped[0]].value;
-    
+
 
     keepGoing = () => {
         this.battleLog = this.getBattleResults(this.getEnemy());
@@ -63,15 +63,15 @@ export default class BattleWindow extends Component {
         let enHP = enemy.health;
         let blocks = 0;
         log.push(`You encounter a ${enemy.name}.`)
-        
+
         while (plHP > 0 && enHP > 0) {
             //player always attacks first for now
             let damage = 0;
             if (Math.random() * 100 < 95 - enemy.defense) {
                 //crit
-                const crit = Math.random() <= .10;                
-                let baseDamage = getRandomInt(attack[0],attack[1]);
-                if(crit)
+                const crit = Math.random() <= .10;
+                let baseDamage = getRandomInt(attack[0], attack[1]);
+                if (crit)
                     baseDamage *= 2;
                 damage = Math.max(0, baseDamage - enemy.defense)
                 if (damage > 0) {
@@ -87,7 +87,7 @@ export default class BattleWindow extends Component {
                 log.push(`${player.name} misses their attack!`)
 
             if (Math.random() * 100 < 95 - armor) {
-                damage = Math.max(0, getRandomInt(enemy.attack[0],enemy.attack[1]) - armor)
+                damage = Math.max(0, getRandomInt(enemy.attack[0], enemy.attack[1]) - armor)
                 if (damage > 0) {
                     plHP = plHP - damage
                     log.push(`${enemy.name} hits ${player.name} for ${damage} damage.`)
@@ -103,11 +103,22 @@ export default class BattleWindow extends Component {
             // break;
         }
         if (plHP > 0) {
-            const gold = getRandomInt(enemy.loot.gold[0],enemy.loot.gold[1])
+            const gold = getRandomInt(enemy.loot.gold[0], enemy.loot.gold[1])
             log.push(`${player.name} has defeated ${enemy.name}!!`)
             player.gold += gold;
-            
+
             log.push(`You loot ${gold} gold coins.`)
+
+            enemy.loot.items.map(item => {
+                if ((Math.random() * 100) <= item.droprate) {
+
+                    player.inventory.push(item.id);
+                    log.push(`You found a ${constants.Items[item.id].name}`)
+                }
+            })
+
+
+
         } else {
             log.push(`${enemy.name} has slain ${player.name}!!`)
         }
@@ -116,6 +127,7 @@ export default class BattleWindow extends Component {
         return log;
 
     }
+
 
     getEnemy = () => {
         let enemies = [];

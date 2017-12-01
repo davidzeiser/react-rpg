@@ -56,27 +56,27 @@
             "name": "Wooden Stick",
             "price": 5,
             "value": [0,1],
-            "slot": "weapon"
+            "slot": 0
         },
         {
             "name": "Iron Sword",
             "price": 10,
             "value": [1,2],
-            "type": "weapon"
+            "slot": 0
         },
         
         {
             "name": "Leather Tunic",
             "price": 5,
             "value": 1,
-            "slot": "body"
+            "slot": 1
         },
         
         {
             "name": "Leather Cap",
             "price": 5,
             "value": 1,
-            "slot": "head"
+            "slot": 2
         }
     ],
     "Enemies": [
