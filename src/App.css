@@ -1,21 +1,21 @@
-html{
-  height:100vh;
-}
-
-body{
-  height:100%;
-}
-
 .buttonBar{
   position: absolute; 
-  left: 0 ; right: 0; bottom: 0; 
-  height:80px
+  left: 260px ; right: 0; bottom: 0px; 
+}
+
+.buttonBar button{
+  margin: 5px;
+}
+
+.area{
+  text-align: center;
+  margin: 10px 0 0 260px
 }
 
 .messageLog {
-  width: 80%;  
-  height: 500px;
+  width: 95%;  
+  height: 70vh;
   overflow-y: auto;
-  margin: 100px auto;
+  margin: 10px auto;
   text-align: left;
 }

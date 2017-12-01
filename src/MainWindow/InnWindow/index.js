@@ -6,12 +6,6 @@ import Button from 'material-ui/Button';
 import MessageLog from '../../MessageLog'
 import log from '../../log.json';
 
-const styles = {
-    "button": {
-        "margin": 10
-    }
-}
-
 export default class InnWindow extends Component {
 
     state = {
@@ -51,7 +45,7 @@ export default class InnWindow extends Component {
         return (
 
             <div>
-                <div style={{ textAlign: 'center', margin: '20px 0 0 260px' }}>
+                <div className="area">
                     <Typography type="display2">
                         {name}
                     </Typography>
@@ -61,13 +55,13 @@ export default class InnWindow extends Component {
                     <Divider />
                     <MessageLog />
                     <div className="buttonBar">
-                        <Button raised color="primary" style={styles.button} disabled>
+                        <Button raised color="primary" disabled>
                             Info
                         </Button>
-                        <Button raised color="primary" style={styles.button} onClick={this.handleRest} disabled={this.state.rested}>
+                        <Button raised color="primary" onClick={this.handleRest} disabled={this.state.rested}>
                             Rest (25 Gold)
                         </Button>
-                        <Button raised color="primary" style={styles.button} onClick={this.leave}>
+                        <Button raised color="primary" onClick={this.leave}>
                             Leave
                         </Button>
                     </div>

@@ -6,12 +6,6 @@ import Button from 'material-ui/Button';
 import MessageLog from '../../MessageLog'
 import log from '../../log.json';
 
-const styles = {
-    "button": {
-        "margin": 10
-    }
-}
-
 export default class ShopWindow extends Component {
 
     componentWillMount() {
@@ -30,7 +24,7 @@ export default class ShopWindow extends Component {
         return (
 
             <div>
-                <div style={{ textAlign: 'center', margin: '20px 0 0 260px' }}>
+                <div className="area">
                     <Typography type="display2">
                         {name}
                     </Typography>
@@ -39,29 +33,17 @@ export default class ShopWindow extends Component {
                     </Typography>
                     <Divider />
                     <MessageLog />
-<<<<<<< HEAD
-                    <Button raised color="primary" style={styles.button} disabled>
-                        Buy
-                    </Button>
-                    <Button raised color="primary" style={styles.button} disabled>
-                        Sell
-                    </Button>
-                    <Button raised color="primary" style={styles.button} onClick={this.leave}>
-                        Leave
-                    </Button>
-=======
                     <div className="buttonBar">
-                        <Button raised color="primary" style={styles.button}>
+                        <Button raised color="primary" >
                             Buy
                         </Button>
-                        <Button raised color="primary" style={styles.button}>
+                        <Button raised color="primary" >
                                 Sell
                         </Button>
-                        <Button raised color="primary" style={styles.button} onClick={this.leave}>
+                        <Button raised color="primary" onClick={this.leave}>
                                 Leave
                         </Button>
                     </div>
->>>>>>> 9da9e36bba09db90c857b10dc6e4521314ca7eac
                 </div>
                 <div>
                 </div>

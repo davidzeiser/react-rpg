@@ -5,11 +5,7 @@ import log from '../../log.json';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import MessageLog from '../../MessageLog'
-const styles = {
-    "button": {
-        "margin": 10
-    }
-}
+
 
 export default class TownWindow extends Component {
 
@@ -24,7 +20,7 @@ export default class TownWindow extends Component {
         return (
 
             <div>
-                <div style={{ textAlign: 'center', margin: '20px 0 0 260px' }}>
+                <div className="area">
                     <Typography type="display2">
                         {name}
                     </Typography>
@@ -34,13 +30,13 @@ export default class TownWindow extends Component {
                     <Divider />
                     <MessageLog />
                     <div className="buttonBar">
-                        <Button raised color="primary" style={styles.button} onClick={this.props.shopButton}>
+                        <Button raised color="primary" onClick={this.props.shopButton}>
                             Shop
                         </Button>
-                        <Button raised color="primary" style={styles.button} onClick={this.props.innButton}>
+                        <Button raised color="primary" onClick={this.props.innButton}>
                             Inn
                         </Button>
-                        <Button raised color="primary" style={styles.button} onClick={this.props.areaButton}>
+                        <Button raised color="primary" onClick={this.props.areaButton}>
                             Adventure
                         </Button>
                     </div>

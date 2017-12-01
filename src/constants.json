@@ -2,35 +2,35 @@
     "Areas": [
         {
             "name": "Town",
-            "header": "You are in the town"
+            "header": ""
         },
         {
             "name": "Inn",
-            "header": "Welcome to the Inn. Rest to recover health.",
+            "header": "",
             "enter": "You enter the Inn.",
             "exit": "You leave the Inn."
         },
         {
             "name": "Shop",
-            "header": "You can buy or sell things here.",
+            "header": "",
             "enter": "You are standing in the shop.",
             "exit": "You leave the shop and head back to the center of town."
         },
         {
             "name": "Road",
-            "header": "Pick a location to travel too.",
+            "header": "",
             "enter": "You are standing on the open road. To the left is a forest, ahead are mountains and to the right is a castle. Where do you want to go?"
         },
         {
             "name": "Forest",
-            "header": "Somewhere in the forest",
+            "header": "",
             "enter": "You make your way into the vast forest.",
             "exit": "You make your way back to town from the forest."
             
         },
         {
             "name": "Mountains",
-            "header": "You are in the town.",
+            "header": "",
             "enter": "You embark to the foothill of the mountain.",
             "exit": "You leave the mountain and head back to town."
         },

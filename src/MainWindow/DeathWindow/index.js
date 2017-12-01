@@ -6,12 +6,6 @@ import Button from 'material-ui/Button';
 import MessageLog from '../../MessageLog'
 import log from '../../log.json';
 
-const styles = {
-    "button": {
-        "margin": 10
-    }
-}
-
 export default class ShopWindow extends Component {
 
     componentWillMount() {
@@ -26,7 +20,7 @@ export default class ShopWindow extends Component {
         return (
 
             <div>
-                <div style={{ textAlign: 'center', margin: '20px 0 0 260px' }}>
+                <div className="area">
                     <Typography type="display2">
                         {name}
                     </Typography>
@@ -36,7 +30,7 @@ export default class ShopWindow extends Component {
                     <Divider />
                     <MessageLog />
                     <div className="buttonBar">
-                        <Button raised color="primary" style={styles.button} onClick={this.props.restartGame}>
+                        <Button raised color="primary" onClick={this.props.restartGame}>
                             Restart
                     </Button>
                     </div>
