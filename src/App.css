@@ -1,3 +1,17 @@
+html{
+  height:100vh;
+}
+
+body{
+  height:100%;
+}
+
+.buttonBar{
+  position: absolute; 
+  left: 0 ; right: 0; bottom: 0; 
+  height:80px
+}
+
 .messageLog {
   width: 80%;  
   height: 500px;

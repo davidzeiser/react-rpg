@@ -35,27 +35,27 @@ export default class BattleWindow extends Component {
 
     keepGoing = () => {
         this.battleLog = this.getBattleResults(this.getEnemy());
-        this.setState({battlesWon: this.state.battlesWon + 1})
-        log.Messages.push({text: 'You continue to explore the area.'})
+        this.setState({ battlesWon: this.state.battlesWon + 1 })
+        log.Messages.push({ text: 'You continue to explore the area.' })
         this.addBattleToMessageLog(this.battleLog);
         this.props.updateCharacter(this.props.characterData)
     }
 
     addBattleToMessageLog = () => {
-        log.Messages.push({text: ''})
-        this.battleLog.map(entry => log.Messages.push({text: entry}));
+        log.Messages.push({ text: '' })
+        this.battleLog.map(entry => log.Messages.push({ text: entry }));
     }
 
     componentWillMount() {
-        log.Messages.push({text: constants.Areas[4 + this.props.difficulty].enter})
+        log.Messages.push({ text: constants.Areas[4 + this.props.difficulty].enter })
         this.battleLog = this.getBattleResults(this.getEnemy());
         this.addBattleToMessageLog(this.battleLog);
         this.props.updateCharacter(this.props.characterData)
     }
 
     leave = () => {
-        log.Messages.push({text: constants.Areas[4 + this.props.difficulty].exit})
-        log.Messages.push({text: ''}) //divider
+        log.Messages.push({ text: constants.Areas[4 + this.props.difficulty].exit })
+        log.Messages.push({ text: '' }) //divider
         this.props.exitButton()
     }
 
@@ -108,12 +108,12 @@ export default class BattleWindow extends Component {
         if (plHP > 0) {
             log.push(`${player.name} has defeated ${enemy.name}!!`)
             player.gold += enemy.loot.gold;
-            
+
             log.push(`You loot ${enemy.loot.gold} gold coins.`)
         } else {
             log.push(`${enemy.name} has slain ${player.name}!!`)
         }
-        player.curHealth = Math.max(0,plHP);
+        player.curHealth = Math.max(0, plHP);
 
         return log;
 
@@ -150,12 +150,14 @@ export default class BattleWindow extends Component {
                 <Divider />
 
                 <MessageLog />
-                <Button raised color="primary" style={styles.button} onClick={this.keepGoing}>
-                    Keep Adventuring
-                </Button>
-                <Button raised color="primary" style={styles.button} onClick={this.leave}>
-                    Go Back
-                </Button>
+                <div className="buttonBar">
+                    <Button raised color="primary" style={styles.button} onClick={this.keepGoing}>
+                        Keep Adventuring
+                    </Button>
+                    <Button raised color="primary" style={styles.button} onClick={this.leave}>
+                        Go Back
+                    </Button>
+                </div>
             </div>
         );
     }

@@ -14,11 +14,11 @@ const styles = {
 
 export default class ShopWindow extends Component {
 
-    componentWillMount() {        
-        log.Messages.push({text: constants.Areas[7].enter})
-    }    
+    componentWillMount() {
+        log.Messages.push({ text: constants.Areas[7].enter })
+    }
 
-    
+
 
     render() {
         const name = constants.Areas[7].name
@@ -35,9 +35,11 @@ export default class ShopWindow extends Component {
                     </Typography>
                     <Divider />
                     <MessageLog />
-                    <Button raised color="primary" style={styles.button} onClick={this.props.restartGame}>
-                        Restart
+                    <div className="buttonBar">
+                        <Button raised color="primary" style={styles.button} onClick={this.props.restartGame}>
+                            Restart
                     </Button>
+                    </div>
                 </div>
                 <div>
                 </div>

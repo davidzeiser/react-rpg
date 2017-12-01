@@ -14,26 +14,26 @@ const styles = {
 
 export default class AdventureWindow extends Component {
 
-    componentWillMount() {        
-        log.Messages.push({text: constants.Areas[3].enter})
+    componentWillMount() {
+        log.Messages.push({ text: constants.Areas[3].enter })
     }
-    
+
 
     render() {
         const name = constants.Areas[3].name
         const header = constants.Areas[3].header
         return (
 
-            <div>
-                <div style={{ textAlign: 'center', margin: '20px 0 0 260px' }}>
-                    <Typography type="display2">
-                        {name}
-                    </Typography>
-                    <Typography type="title" gutterBottom>
-                        {header}
-                    </Typography>
-                    <Divider />
-                    <MessageLog />
+            <div style={{ textAlign: 'center', margin: '20px 0 0 260px' }}>
+                <Typography type="display2">
+                    {name}
+                </Typography>
+                <Typography type="title" gutterBottom>
+                    {header}
+                </Typography>
+                <Divider />
+                <MessageLog />
+                <div className="buttonBar">
                     <Button raised color="primary" style={styles.button} onClick={this.props.easyButton}>
                         Forest (easy)
                     </Button>
@@ -42,9 +42,7 @@ export default class AdventureWindow extends Component {
                     </Button>
                     <Button raised color="primary" style={styles.button} onClick={this.props.hardButton} disabled>
                         Castle (boss)
-                    </Button>                                     
-                </div>
-                <div>
+                    </Button>
                 </div>
             </div>
         );
