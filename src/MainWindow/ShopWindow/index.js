@@ -39,10 +39,10 @@ export default class ShopWindow extends Component {
                     </Typography>
                     <Divider />
                     <MessageLog />
-                    <Button raised color="primary" style={styles.button}>
+                    <Button raised color="primary" style={styles.button} disabled>
                         Buy
                     </Button>
-                    <Button raised color="primary" style={styles.button}>
+                    <Button raised color="primary" style={styles.button} disabled>
                         Sell
                     </Button>
                     <Button raised color="primary" style={styles.button} onClick={this.leave}>

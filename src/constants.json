@@ -55,13 +55,13 @@
         {
             "name": "Wooden Stick",
             "price": 5,
-            "value": 1,
+            "value": [0,1],
             "slot": "weapon"
         },
         {
             "name": "Iron Sword",
             "price": 10,
-            "value": 2,
+            "value": [1,2],
             "type": "weapon"
         },
         
@@ -83,11 +83,11 @@
         {
             "name": "Boar", 
             "level": 1,
-            "attack": 3, 
+            "attack": [2,4], 
             "defense": 0,
             "health": 3,
             "loot": {
-                "gold": 10,
+                "gold": [1,10],
                 "items": [
                     {
                         "id": 2,
@@ -107,11 +107,11 @@
         {
             "name": "Wolf", 
             "level": 2,
-            "attack": 4, 
+            "attack": [2,6], 
             "defense": 0,
-            "health": 10,
+            "health": 5,
             "loot": {
-                "gold": 5,
+                "gold": [5,15],
                 "items": [
                     {
                         "id": 2,
@@ -132,11 +132,11 @@
         {
             "name": "Bear", 
             "level": 4,
-            "attack": 5, 
+            "attack": [3,6], 
             "defense": 0,
-            "health": 10,
+            "health": 8,
             "loot": {
-                "gold": 25,
+                "gold": [10,25],
                 "items": [
                     {
                         "id": 2,
