@@ -14,13 +14,13 @@ const styles = {
 
 export default class ShopWindow extends Component {
 
-    componentWillMount() {        
-        log.Messages.push({text: constants.Areas[2].enter})
+    componentWillMount() {
+        log.Messages.push({ text: constants.Areas[2].enter })
     }
-    
+
 
     leave = () => {
-        log.Messages.push({text: constants.Areas[2].exit})
+        log.Messages.push({ text: constants.Areas[2].exit })
         this.props.exitButton()
     }
 
@@ -39,6 +39,7 @@ export default class ShopWindow extends Component {
                     </Typography>
                     <Divider />
                     <MessageLog />
+<<<<<<< HEAD
                     <Button raised color="primary" style={styles.button} disabled>
                         Buy
                     </Button>
@@ -48,6 +49,19 @@ export default class ShopWindow extends Component {
                     <Button raised color="primary" style={styles.button} onClick={this.leave}>
                         Leave
                     </Button>
+=======
+                    <div className="buttonBar">
+                        <Button raised color="primary" style={styles.button}>
+                            Buy
+                        </Button>
+                        <Button raised color="primary" style={styles.button}>
+                                Sell
+                        </Button>
+                        <Button raised color="primary" style={styles.button} onClick={this.leave}>
+                                Leave
+                        </Button>
+                    </div>
+>>>>>>> 9da9e36bba09db90c857b10dc6e4521314ca7eac
                 </div>
                 <div>
                 </div>

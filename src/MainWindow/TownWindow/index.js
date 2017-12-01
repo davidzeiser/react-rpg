@@ -13,9 +13,9 @@ const styles = {
 
 export default class TownWindow extends Component {
 
-    componentWillMount() {               
-        if(this.props.lastArea !== 2 && this.props.lastArea !== 1)
-            log.Messages.push({text: `You enter the town of Atrec`})
+    componentWillMount() {
+        if (this.props.lastArea !== 2 && this.props.lastArea !== 1)
+            log.Messages.push({ text: `You enter the town of Atrec` })
     }
 
     render() {
@@ -33,15 +33,17 @@ export default class TownWindow extends Component {
                     </Typography>
                     <Divider />
                     <MessageLog />
-                    <Button raised color="primary" style={styles.button} onClick={this.props.shopButton}>
-                        Shop
-                    </Button>
-                    <Button raised color="primary" style={styles.button} onClick={this.props.innButton}>
-                        Inn
-                    </Button>
-                    <Button raised color="primary" style={styles.button} onClick={this.props.areaButton}>
-                        Adventure
-                    </Button>
+                    <div className="buttonBar">
+                        <Button raised color="primary" style={styles.button} onClick={this.props.shopButton}>
+                            Shop
+                        </Button>
+                        <Button raised color="primary" style={styles.button} onClick={this.props.innButton}>
+                            Inn
+                        </Button>
+                        <Button raised color="primary" style={styles.button} onClick={this.props.areaButton}>
+                            Adventure
+                        </Button>
+                    </div>
                 </div>
                 <div>
                 </div>

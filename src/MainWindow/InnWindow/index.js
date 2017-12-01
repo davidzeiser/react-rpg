@@ -18,30 +18,30 @@ export default class InnWindow extends Component {
         rested: false
     }
 
-    componentWillMount() {        
-        log.Messages.push({text: constants.Areas[1].enter})
+    componentWillMount() {
+        log.Messages.push({ text: constants.Areas[1].enter })
     }
 
     leave = () => {
-        log.Messages.push({text: constants.Areas[1].exit})
+        log.Messages.push({ text: constants.Areas[1].exit })
         this.props.exitButton()
     }
 
     handleRest = () => {
-        if(this.props.characterData.curHealth === this.props.characterData.maxHealth) {
-            log.Messages.push({text: `You already have full health.`})
-            this.setState({rested: true})
+        if (this.props.characterData.curHealth === this.props.characterData.maxHealth) {
+            log.Messages.push({ text: `You already have full health.` })
+            this.setState({ rested: true })
             return;
         }
-        if(this.props.characterData.gold < 25) {
-            log.Messages.push({text: `You don't have enough gold.`})
-            this.setState({rested: false})
+        if (this.props.characterData.gold < 25) {
+            log.Messages.push({ text: `You don't have enough gold.` })
+            this.setState({ rested: false })
         } else {
-            log.Messages.push({text: `You rest and recover ${this.props.characterData.maxHealth - this.props.characterData.curHealth} health.`})
+            log.Messages.push({ text: `You rest and recover ${this.props.characterData.maxHealth - this.props.characterData.curHealth} health.` })
             this.props.characterData.curHealth = this.props.characterData.maxHealth;
             this.props.characterData.gold -= 25;
             this.props.updateCharacter(this.props.characterData);
-            this.setState({rested: true})
+            this.setState({ rested: true })
         }
     }
 
@@ -60,15 +60,17 @@ export default class InnWindow extends Component {
                     </Typography>
                     <Divider />
                     <MessageLog />
-                    <Button raised color="primary" style={styles.button} disabled>
-                        Info
-                    </Button>
-                    <Button raised color="primary" style={styles.button} onClick={this.handleRest} disabled={this.state.rested}>
-                        Rest (25 Gold)
-                    </Button>
-                    <Button raised color="primary" style={styles.button} onClick={this.leave}>
-                        Leave
-                    </Button>                    
+                    <div className="buttonBar">
+                        <Button raised color="primary" style={styles.button} disabled>
+                            Info
+                        </Button>
+                        <Button raised color="primary" style={styles.button} onClick={this.handleRest} disabled={this.state.rested}>
+                            Rest (25 Gold)
+                        </Button>
+                        <Button raised color="primary" style={styles.button} onClick={this.leave}>
+                            Leave
+                        </Button>
+                    </div>
                 </div>
                 <div>
                 </div>
