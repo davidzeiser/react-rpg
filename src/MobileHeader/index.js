@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-
+import ListSubheader from 'material-ui/List/ListSubheader';
 import Drawer from 'material-ui/Drawer';
-
+import { FormControl, FormHelperText } from 'material-ui/Form';
 import Paper from 'material-ui/Paper';
 import { LinearProgress } from 'material-ui/Progress';
-
-
+import Select from 'material-ui/Select';
+import Menu, { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import constants from '../constants.json';
 import Divider from 'material-ui/Divider';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Collapse from 'material-ui/transitions/Collapse';
 import Hidden from 'material-ui/Hidden';
 import Badge from 'material-ui/Badge';
 import log from '../log.json';
@@ -53,7 +54,7 @@ const styles = theme => ({
 });
 
 
-class CharacterDrawer extends Component {
+class MobileHeader extends Component {
 
     state = {
         mobileOpen: false
@@ -65,7 +66,7 @@ class CharacterDrawer extends Component {
     };
 
     handleEquip = (item) => {
-        item = parseInt(item,10);
+        item = parseInt(item);
         this.props.characterData.inventory.unshift(this.props.characterData.equipped[constants.Items[item].slot]);
         this.props.characterData.equipped[constants.Items[item].slot] = item;
         this.props.characterData.inventory.splice(this.props.characterData.inventory.indexOf(item), 1);
@@ -239,9 +240,9 @@ class CharacterDrawer extends Component {
     }
 };
 
-CharacterDrawer.propTypes = {
+MobileHeader.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(CharacterDrawer);
+export default withStyles(styles, { withTheme: true })(MobileHeader);

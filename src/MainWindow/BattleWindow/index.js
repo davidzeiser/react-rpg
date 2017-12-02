@@ -3,8 +3,6 @@ import Typography from 'material-ui/Typography';
 import constants from '../../constants.json';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
-import Paper from 'material-ui/Paper';
-import MessageLog from '../../MessageLog'
 import log from '../../log.json';
 
 const getRandomInt = (min, max) => {
@@ -116,7 +114,7 @@ export default class BattleWindow extends Component {
 
                     player.inventory.push(item.id);
                     log.push(`You found a ${constants.Items[item.id].name}`)
-                }
+                } item;
             })
 
 

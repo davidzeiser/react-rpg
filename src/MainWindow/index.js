@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Typography from 'material-ui/Typography';
-import constants from '../constants.json';
-import Divider from 'material-ui/Divider';
 import TownWindow from './TownWindow';
 import ShopWindow from './ShopWindow';
 import InnWindow from './InnWindow';
@@ -74,6 +71,7 @@ export default class MainWindow extends Component {
                 restartGame={this.props.restartGame}
             />
                 break;
+                default: break;
         }
         return (
             <div style={{  width:"100%" }}>

@@ -66,8 +66,6 @@ export default class InnWindow extends Component {
                         </Button>
                     </div>
                 </div>
-                <div>
-                </div>
             </div>
         );
     }

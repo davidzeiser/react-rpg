@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CharacterDrawer from '../CharacterDrawer';
 import MainWindow from '../MainWindow';
+import MobileHeader from '../MobileHeader';
 import Button from 'material-ui/Button'
 
 const Areas = {
@@ -36,10 +37,9 @@ export default class Game extends Component {
   render() {
     const charData = this.state.character
     return (
-      <div style={{display: 'flex'}}>
-        <div>
+      <div style={{display: 'flex'}}>        
         <CharacterDrawer characterData={charData} updateCharacter={this.handleCharacterUpdate}/>
-        </div>
+        {/* <MobileHeader characterData={charData}/>         */}
         <MainWindow
           characterData={charData}
           gameState={this.state.gameState}

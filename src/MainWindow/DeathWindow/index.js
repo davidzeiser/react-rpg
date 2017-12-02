@@ -35,8 +35,6 @@ export default class ShopWindow extends Component {
                     </Button>
                     </div>
                 </div>
-                <div>
-                </div>
             </div>
         );
     }
