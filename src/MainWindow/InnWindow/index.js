@@ -53,7 +53,7 @@ export default class InnWindow extends Component {
                         {header}
                     </Typography>
                     <Divider />
-                    <MessageLog />
+                    {this.props.messageLog}
                     <div className="buttonBar">
                         <Button raised color="primary" disabled>
                             Info

@@ -26,7 +26,7 @@ export default class AdventureWindow extends Component {
                     {header}
                 </Typography>
                 <Divider />
-                <MessageLog />
+                {this.props.messageLog}
                 <div className="buttonBar">
                     <Button raised color="primary" onClick={this.props.easyButton}>
                         Forest (easy)

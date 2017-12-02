@@ -16,7 +16,7 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Collapse from 'material-ui/transitions/Collapse';
 import Hidden from 'material-ui/Hidden';
 import Badge from 'material-ui/Badge';
-
+import log from '../log.json';
 import Grid from 'material-ui/Grid';
 
 const drawerWidth = 240;
@@ -82,9 +82,12 @@ class CharacterDrawer extends Component {
     };
 
     handleEquip = (item) => {
+        item = parseInt(item);
+        this.props.characterData.inventory.unshift(this.props.characterData.equipped[constants.Items[item].slot]);
         this.props.characterData.equipped[constants.Items[item].slot] = item;
-
-        this.props.updateCharacter(this.props.characterData);
+        this.props.characterData.inventory.splice(this.props.characterData.inventory.indexOf(item),1);
+        log.Messages.push({text:`You equip [${constants.Items[item].name}]`})
+        this.props.updateCharacter(this.props.characterData);        
         //constants.Items[item]
     }
 

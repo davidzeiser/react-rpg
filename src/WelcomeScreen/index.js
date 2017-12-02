@@ -23,7 +23,8 @@ const styles = theme => ({
 
 let character = {
   name: '',
-  equipped: [1, 3, 4],
+  equipped: [1, 2, 3],
+  inventory: [],
   curHealth: 100,
   maxHealth: 100,
   gold: 50,
@@ -38,8 +39,8 @@ class WelcomeScreen extends Component {
   componentDidMount() {
     character = {
       name: '',
-      equipped: [1, 3, 4],
-      inventory: [2],
+      equipped: [1, 2, 3],
+      inventory: [],
       curHealth: 100,
       maxHealth: 100,
       gold: 50,

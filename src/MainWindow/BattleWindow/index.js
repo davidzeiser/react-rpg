@@ -76,7 +76,7 @@ export default class BattleWindow extends Component {
                 damage = Math.max(0, baseDamage - enemy.defense)
                 if (damage > 0) {
                     enHP = enHP - damage
-                    log.push(`${player.name} ${(crit) ? "CRITS" : "hits"} ${enemy.name} with ${constants.Items[player.equipped[0]].name} for ${damage} damage${(crit) ? "!!" : "."}`)
+                    log.push(`You ${(crit) ? "CRIT" : "hit"} ${enemy.name} with ${constants.Items[player.equipped[0]].name} for ${damage} damage${(crit) ? "!" : "."}`)
                 }
                 else {
                     log.push(`${enemy.name} blocks your attack!`)
@@ -84,13 +84,15 @@ export default class BattleWindow extends Component {
                 }
             }
             else
-                log.push(`${player.name} misses their attack!`)
+                log.push(`You miss your attack!`)
 
+            if(enHP <= 0)
+                break;
             if (Math.random() * 100 < 95 - armor) {
                 damage = Math.max(0, getRandomInt(enemy.attack[0], enemy.attack[1]) - armor)
                 if (damage > 0) {
                     plHP = plHP - damage
-                    log.push(`${enemy.name} hits ${player.name} for ${damage} damage.`)
+                    log.push(`${enemy.name} hits you for ${damage} damage.`)
                 }
                 else {
                     log.push(`You block the ${enemy.name}'s attack!`)
@@ -159,7 +161,7 @@ export default class BattleWindow extends Component {
                 </Typography>
                 <Divider />
 
-                <MessageLog />
+                {this.props.messageLog}
                 <div className="buttonBar">
                     <Button raised color="primary" onClick={this.keepGoing}>
                         Keep Adventuring

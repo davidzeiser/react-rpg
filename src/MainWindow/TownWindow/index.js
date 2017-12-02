@@ -4,7 +4,6 @@ import constants from '../../constants.json';
 import log from '../../log.json';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
-import MessageLog from '../../MessageLog'
 
 
 export default class TownWindow extends Component {
@@ -14,7 +13,8 @@ export default class TownWindow extends Component {
             log.Messages.push({ text: `You enter the town of Atrec` })
     }
 
-    render() {
+    render() {        
+               
         const name = constants.Areas[0].name
         const header = constants.Areas[0].header
         return (
@@ -28,12 +28,12 @@ export default class TownWindow extends Component {
                         {header}
                     </Typography>
                     <Divider />
-                    <MessageLog />
+                    {this.props.messageLog}
                     <div className="buttonBar">
                         <Button raised color="primary" onClick={this.props.shopButton}>
                             Shop
                         </Button>
-                        <Button raised color="primary"  onClick={this.props.innButton}>
+                        <Button raised color="primary" onClick={this.props.innButton}>
                             Inn
                         </Button>
                         <Button raised color="primary" onClick={this.props.areaButton}>

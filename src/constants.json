@@ -49,34 +49,67 @@
             "name": "None",
             "price": 0,
             "value": 0,
-            "slot": "weapon body head"
-        },
-        
+            "slot": 0
+        },        
         {
             "name": "Wooden Stick",
-            "price": 5,
+            "price": 50,
             "value": [0,1],
             "slot": 0
         },
         {
-            "name": "Iron Sword",
-            "price": 10,
-            "value": [1,2],
-            "slot": 0
-        },
-        
-        {
             "name": "Leather Tunic",
-            "price": 5,
+            "price": 50,
             "value": 1,
             "slot": 1
         },
-        
         {
             "name": "Leather Cap",
-            "price": 5,
+            "price": 50,
             "value": 1,
             "slot": 2
+        },       
+        {
+            "name": "Stone Sword",
+            "price": 100,
+            "value": [1,1],
+            "slot": 0
+        },
+        {
+            "name": "Stone Axe",
+            "price": 100,
+            "value": [0,2],
+            "slot": 0
+        },
+        {
+            "name": "Iron Sword",
+            "price": 200,
+            "value": [1,2],
+            "slot": 0
+        },
+        {
+            "name": "Iron Axe",
+            "price": 200,
+            "value": [0,3],
+            "slot": 0
+        },
+        {
+            "name": "Steel Mace",
+            "price": 500,
+            "value": [1,4],
+            "slot": 0
+        },
+        {
+            "name": "Steel Sword",
+            "price": 500,
+            "value": [2,3],
+            "slot": 0
+        },
+        {
+            "name": "Steel Axe",
+            "price": 500,
+            "value": [0,5],
+            "slot": 0
         }
     ],
     "Enemies": [
@@ -90,17 +123,9 @@
                 "gold": [1,10],
                 "items": [
                     {
-                        "id": 2,
-                        "droprate": 5
-                    },
-                    {
-                        "id": 3,
-                        "droprate": 40
-                    },
-                    {
                         "id": 4,
-                        "droprate": 25
-                    }
+                        "droprate": 10
+                    }                    
                 ]
             }
         },
@@ -114,16 +139,37 @@
                 "gold": [5,15],
                 "items": [
                     {
-                        "id": 2,
-                        "droprate": 15
+                        "id": 4,
+                        "droprate": 10
                     },
                     {
-                        "id": 3,
-                        "droprate": 60
-                    },
+                        "id": 5,
+                        "droprate": 10
+                    }
+                ]
+            }
+            
+        },
+        {
+            "name": "Giant Spider", 
+            "level": 3,
+            "attack": [0,8], 
+            "defense": 0,
+            "health": 7,
+            "loot": {
+                "gold": [7,20],
+                "items": [
                     {
                         "id": 4,
-                        "droprate": 45
+                        "droprate": 10
+                    },
+                    {
+                        "id": 5,
+                        "droprate": 10
+                    },
+                    {
+                        "id": 8,
+                        "droprate": 2
                     }
                 ]
             }
@@ -139,8 +185,16 @@
                 "gold": [10,25],
                 "items": [
                     {
-                        "id": 2,
-                        "droprate": 40
+                        "id": 5,
+                        "droprate": 20
+                    },
+                    {
+                        "id": 6,
+                        "droprate": 10
+                    },
+                    {
+                        "id": 10,
+                        "droprate": 1
                     }
                 ]
             }
