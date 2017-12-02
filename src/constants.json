@@ -11,10 +11,10 @@
             "exit": "You leave the Inn."
         },
         {
-            "name": "Shop",
+            "name": "Market",
             "header": "",
-            "enter": "You are standing in the shop.",
-            "exit": "You leave the shop and head back to the center of town."
+            "enter": "You are in the market square.",
+            "exit": "You leave the market and head back to the center of town."
         },
         {
             "name": "Road",
@@ -36,11 +36,11 @@
         },
         {
             "name": "Castle",
-            "header": "You are in the town"
+            "header": ""
         },
         {
             "name": "You died",
-            "header": "R.I.P",
+            "header": "",
             "enter": "You are dead."
         }
     ],

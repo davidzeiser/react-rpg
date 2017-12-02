@@ -13,18 +13,28 @@ class App extends Component {
     this.onStartGame = this.onStartGame.bind(this);
   }
 
+  componentDidMount() {
+    if(localStorage.getItem('character'))
+    {
+      let char = JSON.parse(localStorage.getItem('character'))
+      if(char.curHealth <= 0) char = null;
+      this.setState({character: char})
+    }
+  }
+
   onStartGame(character) {
     this.setState({character: character})
+    localStorage.setItem('character',JSON.stringify(character));
   }
 
   handleRestart = () => {
-    console.log("app.js restart")
     log.Messages = [
       {
           "text": "Welcome to the game!"
       }
     ]
     this.setState({character: null})
+    localStorage.setItem('character', null);
   }
 
   render() {

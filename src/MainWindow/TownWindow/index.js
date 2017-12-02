@@ -4,7 +4,7 @@ import constants from '../../constants.json';
 import log from '../../log.json';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
-
+import Grid from 'material-ui/Grid';
 
 export default class TownWindow extends Component {
 
@@ -13,8 +13,8 @@ export default class TownWindow extends Component {
             log.Messages.push({ text: `You enter the town of Atrec` })
     }
 
-    render() {        
-               
+    render() {
+
         const name = constants.Areas[0].name
         const header = constants.Areas[0].header
         return (
@@ -29,17 +29,27 @@ export default class TownWindow extends Component {
                     </Typography>
                     <Divider />
                     {this.props.messageLog}
-                    <div className="buttonBar">
-                        <Button raised color="primary" onClick={this.props.shopButton}>
-                            Shop
+                    <Grid container spacing={0} elevation={5} className="buttonGrid">
+                        <Grid item xs={4} >
+                            <Button raised color="primary" onClick={this.props.shopButton}>
+                                Market
                         </Button>
-                        <Button raised color="primary" onClick={this.props.innButton}>
-                            Inn
+                        </Grid>
+
+                        <Grid item xs={4} >
+                            <Button raised color="primary" onClick={this.props.innButton}>
+                                Inn
                         </Button>
-                        <Button raised color="primary" onClick={this.props.areaButton}>
-                            Adventure
+                        </Grid>
+
+                        <Grid item xs={4} >
+                            <Button raised color="primary" onClick={this.props.areaButton}>
+                                Adventure
                         </Button>
-                    </div>
+                        </Grid>
+                    </Grid>
+
+
                 </div>
                 <div>
                 </div>

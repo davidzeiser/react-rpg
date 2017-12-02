@@ -19,10 +19,10 @@ export default class MessageLog extends Component {
         }
     }
 
-    render() {        
+    render() {  
+        if(log.Messages.length > 200)
+        log.Messages.splice(0,log.Messages.length -200)        
         return (
-
-
             <Paper id="log" className="messageLog">
                 {log.Messages.map((entry, id) =>
                     (entry.text !== '') ? 

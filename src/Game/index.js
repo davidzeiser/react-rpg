@@ -24,23 +24,34 @@ export default class Game extends Component {
   }
 
   changeState = (state) => {
-    this.setState({ lastArea: this.state.gameState, gameState: state })
+    this.setState({ lastArea: this.state.gameState, gameState: state, mobileIsOpen: false })
   }
 
   handleCharacterUpdate = (char) => {
     this.setState({ character: char })
     if (char.curHealth <= 0) {
-      this.changeState(Areas.GAMEOVER);
+      this.changeState(Areas.GAMEOVER);        
     }
+    localStorage.setItem('character',JSON.stringify(char));
+  }
+
+  handleMobileToggle = () => {
+    this.setState({ mobileIsOpen: !this.state.mobileIsOpen })
   }
 
   render() {
     const charData = this.state.character
     return (
-      <div style={{display: 'flex'}}>        
-        <CharacterDrawer characterData={charData} updateCharacter={this.handleCharacterUpdate}/>
-        {/* <MobileHeader characterData={charData}/>         */}
+      <div style={{ display: 'flex', height: '100vh' }}>
+        <CharacterDrawer
+          characterData={charData}
+          updateCharacter={this.handleCharacterUpdate}
+          mobileIsOpen={this.state.mobileIsOpen}
+          handleMobileToggle={this.handleMobileToggle}
+        />
+
         <MainWindow
+          MobileHeader={<MobileHeader characterData={charData} handleMobileToggle={this.handleMobileToggle} />}
           characterData={charData}
           gameState={this.state.gameState}
           lastArea={this.state.lastArea}

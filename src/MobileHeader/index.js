@@ -18,13 +18,13 @@ import Hidden from 'material-ui/Hidden';
 import Badge from 'material-ui/Badge';
 import log from '../log.json';
 import Grid from 'material-ui/Grid';
-
+import Button from 'material-ui/Button';
 const drawerWidth = 240;
 
 const styles = theme => ({
-    nameText: {        
+    nameText: {
         paddingLeft: 5
-    },    
+    },
     appBar: {
         position: 'absolute',
         marginLeft: drawerWidth,
@@ -101,139 +101,38 @@ class MobileHeader extends Component {
 
     render() {
         const { classes, theme } = this.props;
-        const itemList = this.getItemList();
-        const drawer = (
-            <div>
-                <Grid container spacing={0} elevation={5}>
-                    <Grid item xs={12} className={classes.nameRoot}>
-                        <Paper style={{paddingBottom: 2}}>
-
-                            <Typography type="headline" gutterBottom className={classes.nameText}>
-                                {this.props.characterData.name}
-                            </Typography>                       
-
-                            <LinearProgress
-                                value={this.props.characterData.curHealth}
-                                color='accent'
-                                mode="determinate"
-                                classes={{root: classes.hpRoot}}
-                            >
-                            </LinearProgress>                            
-                        </Paper>
-                    </Grid>
-
-                    <Grid item sm={9}>
-                        <Paper className={classes.paper}>
-                            <Typography type="caption" className="itemCaption">
-                                Weapon
-                            </Typography>
-                            <Typography type="title" gutterBottom className="itemName">
-
-
-                                {`${constants.Items[this.props.characterData.equipped[0]].name}`}
-
-                            </Typography>
-
-                        </Paper>
-                    </Grid>
-                    <Grid item sm={3}>
-                        <Paper className={classes.paper}>
-                            <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
-                                {`${constants.Items[this.props.characterData.equipped[0]].value.join("-")}`}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item sm={9}>
-                        <Paper className={classes.paper}>
-                            <Typography type="caption" className="itemCaption">
-                                Armor
-                            </Typography>
-                            <Typography type="title" gutterBottom className="itemName">
-                                {`${constants.Items[this.props.characterData.equipped[1]].name}`}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item sm={3}>
-                        <Paper className={classes.paper}>
-                            <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
-                                {`${constants.Items[this.props.characterData.equipped[1]].value}`}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item sm={9}>
-                        <Paper className={classes.paper}>
-                            <Typography type="caption" className="itemCaption">
-                                Head
-                            </Typography>
-                            <Typography type="title" gutterBottom className="itemName">
-                                {`${constants.Items[this.props.characterData.equipped[2]].name}`}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item sm={3}>
-                        <Paper className={classes.paper}>
-                            <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
-                                {`${constants.Items[this.props.characterData.equipped[2]].value}`}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-
-                </Grid>
-
-
-
-
-                <Divider />
-
-                <Paper>
-                    <List>
-                        {
-                            Object.keys(itemList).map((item, id) =>
-                                <Badge badgeContent={itemList[item]} color="primary" key={id} classes={{ root: "inventoryItem" }}>
-                                    <ListItem button onClick={() => this.handleEquip(item)} style={{ width: "100%" }}>
-
-                                        <Typography type="title">
-                                            {constants.Items[item].name}
-                                        </Typography>
-
-                                    </ListItem>
-                                </Badge>
-                            )
-
-
-                        }
-                    </List>
-                </Paper>
-            </div>);
 
         return (
             <div>
                 <Hidden mdUp>
-                    <Drawer
-                        type="temporary"
-                        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                        open={this.state.mobileOpen}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                        onRequestClose={this.handleDrawerToggle}
-                        ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
-                        }}
-                    >
-                        {drawer}
-                    </Drawer>
-                </Hidden>
-                <Hidden mdDown implementation="css">
-                    <Drawer
-                        type="permanent"
-                        open
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                    >
-                        {drawer}
-                    </Drawer>
+            
+
+                        <Grid container spacing={0} elevation={5}>
+                            <Grid item xs={12}>
+                                <Paper style={{ paddingBottom: 2 }} onClick={this.props.handleMobileToggle}>
+
+                                    <Typography type="headline" gutterBottom className={classes.nameText}>
+                                        {this.props.characterData.name}
+                                        <span style={{ float: 'right' }}>
+                                            {this.props.characterData.gold}G
+                                    </span>
+
+                                    </Typography>
+
+                                    <Typography type="headline" gutterBottom className={classes.nameText}>
+                                    </Typography>
+
+                                    <LinearProgress
+                                        value={this.props.characterData.curHealth}
+                                        color='accent'
+                                        mode="determinate"
+                                        classes={{ root: classes.hpRoot }}
+                                    >
+                                    </LinearProgress>
+                                </Paper>
+                            </Grid>
+                        </Grid>
+
                 </Hidden>
             </div>
         );

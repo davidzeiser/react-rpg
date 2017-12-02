@@ -30,6 +30,7 @@ export default class MainWindow extends Component {
                 messageLog={<MessageLog />}
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 updateCharacter={this.props.updateCharacter}
+                characterData={this.props.characterData}
             />
                 break;
             case this.areas.AREASELECT: content = <AdventureWindow
@@ -75,6 +76,7 @@ export default class MainWindow extends Component {
         }
         return (
             <div style={{  width:"100%" }}>
+                {this.props.MobileHeader}
                 {content}
             </div>
         );

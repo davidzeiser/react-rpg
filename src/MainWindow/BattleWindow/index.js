@@ -5,6 +5,9 @@ import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import log from '../../log.json';
 
+import Grid from 'material-ui/Grid';
+
+
 const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -160,14 +163,23 @@ export default class BattleWindow extends Component {
                 <Divider />
 
                 {this.props.messageLog}
-                <div className="buttonBar">
+                <Grid container spacing={0} elevation={5} className="buttonGrid">
+                        <Grid item xs={6} >
+
                     <Button raised color="primary" onClick={this.keepGoing}>
                         Keep Adventuring
                     </Button>
+                    </Grid>
+                    <Grid item xs={6} >
+                    
                     <Button raised color="primary" onClick={this.leave}>
                         Go Back
                     </Button>
-                </div>
+                    </Grid>
+
+                    </Grid>
+                    
+
             </div>
         );
     }

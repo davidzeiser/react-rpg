@@ -6,6 +6,9 @@ import Button from 'material-ui/Button';
 import MessageLog from '../../MessageLog'
 import log from '../../log.json';
 
+import Grid from 'material-ui/Grid';
+
+
 export default class InnWindow extends Component {
 
     state = {
@@ -54,17 +57,29 @@ export default class InnWindow extends Component {
                     </Typography>
                     <Divider />
                     {this.props.messageLog}
-                    <div className="buttonBar">
-                        <Button raised color="primary" disabled>
-                            Info
+
+                    <Grid container spacing={0} elevation={5} className="buttonGrid">
+                        <Grid item xs={4} >
+
+                            <Button raised color="primary" disabled>
+                                Info
                         </Button>
-                        <Button raised color="primary" onClick={this.handleRest} disabled={this.state.rested}>
-                            Rest (25 Gold)
+                        </Grid>
+
+                        <Grid item xs={4} >
+                            <Button raised color="primary" onClick={this.handleRest} disabled={this.state.rested}>
+                                Rest (25 Gold)
                         </Button>
-                        <Button raised color="primary" onClick={this.leave}>
-                            Leave
+                        </Grid>
+
+                        <Grid item xs={4} >
+                            <Button raised color="primary" onClick={this.leave}>
+                                Leave
                         </Button>
-                    </div>
+                        </Grid>
+                    </Grid>
+
+
                 </div>
             </div>
         );

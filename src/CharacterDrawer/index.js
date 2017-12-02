@@ -18,6 +18,8 @@ import Badge from 'material-ui/Badge';
 import log from '../log.json';
 import Grid from 'material-ui/Grid';
 
+import cashmoney from '../imgs/moneybag.svg'
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -54,15 +56,6 @@ const styles = theme => ({
 
 
 class CharacterDrawer extends Component {
-
-    state = {
-        mobileOpen: false
-
-    };
-
-    handleDrawerToggle = () => {
-        this.setState({ mobileOpen: !this.state.mobileOpen });
-    };
 
     handleEquip = (item) => {
         item = parseInt(item,10);
@@ -106,9 +99,14 @@ class CharacterDrawer extends Component {
                 <Grid container spacing={0} elevation={5}>
                     <Grid item xs={12} className={classes.nameRoot}>
                         <Paper style={{paddingBottom: 2}}>
-
                             <Typography type="headline" gutterBottom className={classes.nameText}>
+
                                 {this.props.characterData.name}
+                                <span style={{ float: 'right' }}>
+  
+        
+                                            {this.props.characterData.gold}
+                                    </span>
                             </Typography>                       
 
                             <LinearProgress
@@ -121,7 +119,7 @@ class CharacterDrawer extends Component {
                         </Paper>
                     </Grid>
 
-                    <Grid item sm={9}>
+                    <Grid item xs={9}>
                         <Paper className={classes.paper}>
                             <Typography type="caption" className="itemCaption">
                                 Weapon
@@ -135,14 +133,14 @@ class CharacterDrawer extends Component {
 
                         </Paper>
                     </Grid>
-                    <Grid item sm={3}>
+                    <Grid item xs={3}>
                         <Paper className={classes.paper}>
                             <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
                                 {`${constants.Items[this.props.characterData.equipped[0]].value.join("-")}`}
                             </Typography>
                         </Paper>
                     </Grid>
-                    <Grid item sm={9}>
+                    <Grid item xs={9}>
                         <Paper className={classes.paper}>
                             <Typography type="caption" className="itemCaption">
                                 Armor
@@ -152,14 +150,14 @@ class CharacterDrawer extends Component {
                             </Typography>
                         </Paper>
                     </Grid>
-                    <Grid item sm={3}>
+                    <Grid item xs={3}>
                         <Paper className={classes.paper}>
                             <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
                                 {`${constants.Items[this.props.characterData.equipped[1]].value}`}
                             </Typography>
                         </Paper>
                     </Grid>
-                    <Grid item sm={9}>
+                    <Grid item xs={9}>
                         <Paper className={classes.paper}>
                             <Typography type="caption" className="itemCaption">
                                 Head
@@ -169,7 +167,7 @@ class CharacterDrawer extends Component {
                             </Typography>
                         </Paper>
                     </Grid>
-                    <Grid item sm={3}>
+                    <Grid item xs={3}>
                         <Paper className={classes.paper}>
                             <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
                                 {`${constants.Items[this.props.characterData.equipped[2]].value}`}
@@ -211,11 +209,11 @@ class CharacterDrawer extends Component {
                     <Drawer
                         type="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                        open={this.state.mobileOpen}
+                        open={this.props.mobileIsOpen}
                         classes={{
                             paper: classes.drawerPaper,
                         }}
-                        onRequestClose={this.handleDrawerToggle}
+                        onRequestClose={this.props.handleMobileToggle}
                         ModalProps={{
                             keepMounted: true, // Better open performance on mobile.
                         }}
