@@ -31,10 +31,11 @@ export default class InnWindow extends Component {
             return;
         }
         if (this.props.characterData.gold < 25) {
-            log.Messages.push({ text: `You don't have enough gold.` })
+            log.Messages.push({ text: `<b>You don't have enough gold.` })
+            this.props.updateCharacter(this.props.characterData);
             this.setState({ rested: false })
         } else {
-            log.Messages.push({ text: `You rest and recover ${this.props.characterData.maxHealth - this.props.characterData.curHealth} health.` })
+            log.Messages.push({ text: `You rest and recover <b>${this.props.characterData.maxHealth - this.props.characterData.curHealth} health.` })
             this.props.characterData.curHealth = this.props.characterData.maxHealth;
             this.props.characterData.gold -= 25;
             this.props.updateCharacter(this.props.characterData);

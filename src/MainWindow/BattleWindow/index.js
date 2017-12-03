@@ -13,6 +13,8 @@ const getRandomInt = (min, max) => {
 }
 
 export default class BattleWindow extends Component {
+
+
     state = {
         battlesWon: 0
     }
@@ -30,6 +32,7 @@ export default class BattleWindow extends Component {
 
 
     keepGoing = () => {
+        console.log( this.state.battlesWon);
         this.battleLog = this.getBattleResults(this.getEnemy());
         this.setState({ battlesWon: this.state.battlesWon + 1 })
         log.Messages.push({ text: 'You continue to explore the area.' })
@@ -48,6 +51,7 @@ export default class BattleWindow extends Component {
         this.addBattleToMessageLog(this.battleLog);
         this.props.updateCharacter(this.props.characterData)
     }
+    
 
     leave = () => {
         log.Messages.push({ text: constants.Areas[4 + this.props.difficulty].exit })
@@ -63,7 +67,7 @@ export default class BattleWindow extends Component {
         let plHP = player.curHealth;
         let enHP = enemy.health;
         let blocks = 0;
-        log.push(`You encounter a ${enemy.name}.`)
+        log.push(`You encounter a <b>${enemy.name}`)
 
         while (plHP > 0 && enHP > 0) {
             //player always attacks first for now
@@ -77,7 +81,7 @@ export default class BattleWindow extends Component {
                 damage = Math.max(0, baseDamage - enemy.defense)
                 if (damage > 0) {
                     enHP = enHP - damage
-                    log.push(`You ${(crit) ? "CRIT" : "hit"} ${enemy.name} with ${constants.Items[player.equipped[0]].name} for ${damage} damage${(crit) ? "!" : "."}`)
+                    log.push(`You ${(crit) ? "CRIT" : "hit"} ${enemy.name} with ${constants.Items[player.equipped[0]].name} for ${damage} damage${(crit) ? "!" : ""}`)
                 }
                 else {
                     log.push(`${enemy.name} blocks your attack!`)
@@ -87,13 +91,13 @@ export default class BattleWindow extends Component {
             else
                 log.push(`You miss your attack!`)
 
-            if(enHP <= 0)
+            if (enHP <= 0)
                 break;
             if (Math.random() * 100 < 95 - armor) {
                 damage = Math.max(0, getRandomInt(enemy.attack[0], enemy.attack[1]) - armor)
                 if (damage > 0) {
                     plHP = plHP - damage
-                    log.push(`${enemy.name} hits you for ${damage} damage.`)
+                    log.push(`${enemy.name} hits you for ${damage} damage`)
                 }
                 else {
                     log.push(`You block the ${enemy.name}'s attack!`)
@@ -110,20 +114,53 @@ export default class BattleWindow extends Component {
             log.push(`${player.name} has defeated ${enemy.name}!!`)
             player.gold += gold;
 
-            log.push(`You loot ${gold} gold coins.`)
+            log.push(`You loot <b>${gold} gold`)
+            console.log(constants.Items);
 
-            enemy.loot.items.map(item => {
-                if ((Math.random() * 100) <= item.droprate) {
+            const droprates = [20, 12, 6]
 
-                    player.inventory.push(item.id);
-                    log.push(`You found a ${constants.Items[item.id].name}`)
-                } item;
-            })
+            for (let i = 0; i < 3; i++) {
+                if (enemy.loot.items[i].length > 0) {
+
+                    let droppedItems = enemy.loot.items[i];
+                    if ((Math.random() * 100) <= droprates[i]) {
+                        const x = getRandomInt(0, droppedItems.length - 1);
+                        player.inventory.push(droppedItems[x])
+                        log.push(`You found a <b>${constants.Items[droppedItems[x]].name}`)
+                    }
+
+                    // droppedItems.forEach(function (item) {
+                    //     if ((Math.random() * 100) <= droprates[i]) {
+                    //         player.inventory.push(item);
+                    //         log.push(`You found a ${constants.Items[item].name}`)
+                    //     };
+                    // })    
+                }
+            }
+
+
+            // 0   {name: "None", price: 0, value: 0, slot: 0}
+            // 1   {name: "Wooden Stick", price: 50, value: Array(2), slot: 0}
+            // 2   {name: "Leather Tunic", price: 50, value: 1, slot: 1}
+            // 3   {name: "Leather Cap", price: 50, value: 1, slot: 2}
+            // 4   {name: "Stone Sword", price: 100, value: Array(2), slot: 0}
+            // 5   {name: "Stone Axe", price: 100, value: Array(2), slot: 0}
+            // 6   {name: "Copper Dagger", price: 200, value: Array(2), slot: 0}
+            // 7   {name: "Copper Cleaver", price: 200, value: Array(2), slot: 0}
+            // 8   {name: "Iron Sword", price: 350, value: Array(2), slot: 0}
+            // 9   {name: "Iron Axe", price: 350, value: Array(2), slot: 0}
+            // 10  {name: "Steel Mace", price: 550, value: Array(2), slot: 0}
+            // 11  {name: "Steel Sword", price: 550, value: Array(2), slot: 0}
+            // 12  {name: "Steel Axe", price: 500, value: Array(2), slot: 0}
+            // 13  {name: "Gold Flail", price: 850, value: Array(2), slot: 0}
+            // 14  {name: "Gold Broadsword", price: 850, value: Array(2), slot: 0}
+            // 15  {name: "Gold Poleaxe", price: 850, value: Array(2), slot: 0}
+
 
 
 
         } else {
-            log.push(`${enemy.name} has slain ${player.name}!!`)
+            log.push(`<b>${enemy.name} has slain ${player.name}!!`)
         }
         player.curHealth = Math.max(0, plHP);
 
@@ -133,20 +170,10 @@ export default class BattleWindow extends Component {
 
 
     getEnemy = () => {
-        let enemies = [];
-        switch (this.props.difficulty) {
-            case 0:
-                constants.Enemies.map((enemy) => { if (enemy.level <= 5) enemies.push(enemy); return enemy })
-                break;
-            case 1:
-                constants.Enemies.map((enemy) => { if (enemy.level > 5 && enemy.level <= 10) enemies.push(enemy); return enemy })
-                break;
-            case 2:
-                constants.Enemies.map((enemy) => { if (enemy.level > 15) enemies.push(enemy); return enemy })
-                break;
-        }
+        let enemies = constants.Enemies[this.props.difficulty]
         return enemies[getRandomInt(0, enemies.length - 1)]
     }
+
 
     render() {
         const dif = this.props.difficulty;
@@ -164,21 +191,21 @@ export default class BattleWindow extends Component {
 
                 {this.props.messageLog}
                 <Grid container spacing={0} elevation={5} className="buttonGrid">
-                        <Grid item xs={6} >
+                    <Grid item xs={6} >
 
-                    <Button raised color="primary" onClick={this.keepGoing}>
-                        Keep Adventuring
+                        <Button raised color="primary" onClick={this.keepGoing}>
+                            Keep Adventuring
                     </Button>
                     </Grid>
                     <Grid item xs={6} >
-                    
-                    <Button raised color="primary" onClick={this.leave}>
-                        Go Back
+
+                        <Button raised color="primary" onClick={this.leave}>
+                            Go Back
                     </Button>
                     </Grid>
 
-                    </Grid>
-                    
+                </Grid>
+
 
             </div>
         );

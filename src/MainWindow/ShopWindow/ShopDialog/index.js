@@ -39,6 +39,7 @@ class ShopDialog extends React.Component {
                 fullScreen={fullScreen}
                 open={this.props.open}
                 onRequestClose={this.props.handleRequestClose}
+                
             >
                 <DialogTitle>Click to buy an item<span style={{ float: "right" }}>{this.props.characterData.gold + "G"}</span></DialogTitle>
                 <DialogContent>
@@ -46,7 +47,7 @@ class ShopDialog extends React.Component {
 
                         {constants.Items.map((item, id) =>
                             (id > 4)
-                                ? (<Grid item xs={12} >
+                                ? (<Grid item xs={12} key={id}>
 
                                     <Button
                                         color="primary"
@@ -72,6 +73,9 @@ class ShopDialog extends React.Component {
 
                 </DialogContent>
                 <DialogActions>
+                <Button onClick={this.props.handleSellItem} color="primary" autoFocus>
+                        Sell Items
+            </Button>
                     <Button onClick={this.props.handleRequestClose} color="primary" autoFocus>
                         Leave
             </Button>

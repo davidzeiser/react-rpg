@@ -19,6 +19,9 @@ import Badge from 'material-ui/Badge';
 import log from '../log.json';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
+import moneybagIcon from '../imgs/moneybag.svg'
+
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -114,7 +117,9 @@ class MobileHeader extends Component {
                                     <Typography type="headline" gutterBottom className={classes.nameText}>
                                         {this.props.characterData.name}
                                         <span style={{ float: 'right' }}>
-                                            {this.props.characterData.gold}G
+                                            <img src={moneybagIcon} alt="G" className="moneybagIcon" />
+
+                                            {this.props.characterData.gold}
                                     </span>
 
                                     </Typography>

@@ -37,9 +37,25 @@ export default class ShopWindow extends Component {
             this.props.characterData.inventory.push(item);
             this.props.characterData.gold -= constants.Items[item].price
             this.props.updateCharacter(this.props.characterData);
-            log.Messages.push({text: `You bought a ${constants.Items[item].name} for ${constants.Items[item].price}`})
+            log.Messages.push({text: `You bought a ${constants.Items[item].name} for <b>${constants.Items[item].price} gold`})
         }
     }
+
+    sellItems = () => {
+        let gold = 0;
+        this.props.characterData.inventory.forEach(element => {
+        
+            gold += (constants.Items[element].price / 10)
+        });
+        console.log(this.props.characterData.gold)
+        
+        this.props.characterData.gold += parseInt(gold);
+
+        this.props.characterData.inventory = [];
+        this.props.updateCharacter(this.props.characterData);
+        log.Messages.push({text: `You sold your items for <b>${gold} gold`})
+    }
+
 
     render() {
         const name = constants.Areas[2].name
@@ -56,7 +72,7 @@ export default class ShopWindow extends Component {
                     </Typography>
                     <Divider />
                     {this.props.messageLog}
-                    <ShopDialog open={this.state.shopOpen} handleRequestClose={this.closeShop} buyItem={this.buyItem} characterData={this.props.characterData}/>
+                    <ShopDialog open={this.state.shopOpen} handleRequestClose={this.closeShop} handleSellItem={this.sellItems} buyItem={this.buyItem} characterData={this.props.characterData}/>
                     <Grid container spacing={0} elevation={5} className="buttonGrid">
                         <Grid item xs={4} >
                             <Button raised color="primary" onClick={this.openShop}>

@@ -13,8 +13,8 @@ export default class AdventureWindow extends Component {
 
     componentWillMount() {
         log.Messages.push({ text: constants.Areas[3].enter })
+        console.log(constants.Items);
     }
-
 
     render() {
         const name = constants.Areas[3].name
@@ -26,8 +26,8 @@ export default class AdventureWindow extends Component {
                     {name}
                 </Typography>
                 <Typography type="title" gutterBottom>
-                        {header}
-                    </Typography>
+                    {header}
+                </Typography>
                 <Divider />
                 {this.props.messageLog}
                 <Grid container spacing={0} elevation={5} className="buttonGrid">
@@ -40,13 +40,13 @@ export default class AdventureWindow extends Component {
 
                     <Grid item xs={4} >
 
-                        <Button raised color="primary" onClick={this.props.medButton} disabled>
+                        <Button raised color="primary" onClick={this.props.medButton}>
                             Mountains (hard)
                             </Button>
                     </Grid>
 
                     <Grid item xs={4} >
-                        <Button raised color="primary" onClick={this.props.hardButton} disabled>
+                        <Button raised color="primary" onClick={this.props.hardButton}>
                             Castle (boss)
                             </Button>
                     </Grid>

@@ -18,14 +18,14 @@ import Badge from 'material-ui/Badge';
 import log from '../log.json';
 import Grid from 'material-ui/Grid';
 
-import cashmoney from '../imgs/moneybag.svg'
+import moneybagIcon from '../imgs/moneybag.svg'
 
 const drawerWidth = 240;
 
 const styles = theme => ({
-    nameText: {        
+    nameText: {
         paddingLeft: 5
-    },    
+    },
     appBar: {
         position: 'absolute',
         marginLeft: drawerWidth,
@@ -58,11 +58,15 @@ const styles = theme => ({
 class CharacterDrawer extends Component {
 
     handleEquip = (item) => {
-        item = parseInt(item,10);
-        this.props.characterData.inventory.unshift(this.props.characterData.equipped[constants.Items[item].slot]);
+        item = parseInt(item, 10);
+        console.log(item);
+        if(this.props.characterData.equipped[constants.Items[item].slot] != 0)
+            this.props.characterData.inventory.unshift(this.props.characterData.equipped[constants.Items[item].slot]);
+        
         this.props.characterData.equipped[constants.Items[item].slot] = item;
+
         this.props.characterData.inventory.splice(this.props.characterData.inventory.indexOf(item), 1);
-        log.Messages.push({ text: `You equip [${constants.Items[item].name}]` })
+        log.Messages.push({ text: `You equip <b>${constants.Items[item].name}` })
         this.props.updateCharacter(this.props.characterData);
         //constants.Items[item]
     }
@@ -98,24 +102,25 @@ class CharacterDrawer extends Component {
             <div>
                 <Grid container spacing={0} elevation={5}>
                     <Grid item xs={12} className={classes.nameRoot}>
-                        <Paper style={{paddingBottom: 2}}>
+                        <Paper style={{ paddingBottom: 2 }}>
                             <Typography type="headline" gutterBottom className={classes.nameText}>
 
                                 {this.props.characterData.name}
                                 <span style={{ float: 'right' }}>
-  
-        
-                                            {this.props.characterData.gold}
-                                    </span>
-                            </Typography>                       
+
+                                    <img src={moneybagIcon} alt="G" className="moneybagIcon" />
+
+                                    {this.props.characterData.gold}
+                                </span>
+                            </Typography>
 
                             <LinearProgress
                                 value={this.props.characterData.curHealth}
                                 color='accent'
                                 mode="determinate"
-                                classes={{root: classes.hpRoot}}
+                                classes={{ root: classes.hpRoot }}
                             >
-                            </LinearProgress>                            
+                            </LinearProgress>
                         </Paper>
                     </Grid>
 
