@@ -16,7 +16,7 @@ export default class BattleWindow extends Component {
 
 
     state = {
-        battlesWon: 0
+        battlesWon: 1
     }
 
     getArmorValue = () => {
@@ -33,8 +33,7 @@ export default class BattleWindow extends Component {
 
     keepGoing = () => {
         console.log( this.state.battlesWon);
-        this.battleLog = this.getBattleResults(this.getEnemy());
-        this.setState({ battlesWon: this.state.battlesWon + 1 })
+        this.battleLog = this.getBattleResults(this.getEnemy());        
         log.Messages.push({ text: 'You continue to explore the area.' })
         this.addBattleToMessageLog(this.battleLog);
         this.props.updateCharacter(this.props.characterData)
@@ -111,13 +110,14 @@ export default class BattleWindow extends Component {
         }
         if (plHP > 0) {
             const gold = getRandomInt(enemy.loot.gold[0], enemy.loot.gold[1])
+            this.setState({ battlesWon: this.state.battlesWon + 1 })
             log.push(`${player.name} has defeated ${enemy.name}!!`)
             player.gold += gold;
 
             log.push(`You loot <b>${gold} gold`)
             console.log(constants.Items);
 
-            const droprates = [20, 12, 6]
+            const droprates = [20, 5, 1]
 
             for (let i = 0; i < 3; i++) {
                 if (enemy.loot.items[i].length > 0) {
@@ -170,7 +170,13 @@ export default class BattleWindow extends Component {
 
 
     getEnemy = () => {
-        let enemies = constants.Enemies[this.props.difficulty]
+        let enemies = []
+        constants.Enemies[this.props.difficulty].forEach((enemy,id) => {
+            const normalize = (enemy.level - 1) - this.props.difficulty * 5; 
+            if(Math.random() * 100 <= (100 - (normalize * (15 - this.state.battlesWon/(normalize+1)))))
+                enemies.push(enemy);
+        });
+        console.log(enemies);
         return enemies[getRandomInt(0, enemies.length - 1)]
     }
 

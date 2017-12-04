@@ -46,9 +46,7 @@ export default class ShopWindow extends Component {
         this.props.characterData.inventory.forEach(element => {
         
             gold += (constants.Items[element].price / 10)
-        });
-        console.log(this.props.characterData.gold)
-        
+        });        
         this.props.characterData.gold += parseInt(gold);
 
         this.props.characterData.inventory = [];

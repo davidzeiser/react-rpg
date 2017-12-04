@@ -12,8 +12,7 @@ import Grid from 'material-ui/Grid';
 export default class AdventureWindow extends Component {
 
     componentWillMount() {
-        log.Messages.push({ text: constants.Areas[3].enter })
-        console.log(constants.Items);
+        log.Messages.push({ text: constants.Areas[3].enter })        
     }
 
     render() {
