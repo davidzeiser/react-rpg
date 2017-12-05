@@ -17,7 +17,9 @@ class App extends Component {
     if(localStorage.getItem('character'))
     {
       let char = JSON.parse(localStorage.getItem('character'))
-      if(char.curHealth <= 0) char = null;
+      if(char)
+        if(char.curHealth <= 0)
+         char = null;
       this.setState({character: char})
     }
   }

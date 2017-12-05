@@ -20,7 +20,8 @@ export default class Game extends Component {
   state = {
     character: this.props.character,
     gameState: Areas.TOWN,
-    lastArea: 0
+    lastArea: 0,
+    zonesUnlocked: 0
   }
 
   changeState = (state) => {
@@ -39,6 +40,12 @@ export default class Game extends Component {
     this.setState({ mobileIsOpen: !this.state.mobileIsOpen })
   }
 
+  handleBeatDifficulty = (diff) => {
+    if(diff+1 > this.state.zonesUnlocked)
+      this.setState({zonesUnlocked:diff+1})
+
+  }
+
   render() {
     const charData = this.state.character
     return (
@@ -53,6 +60,8 @@ export default class Game extends Component {
         <MainWindow
           MobileHeader={<MobileHeader characterData={charData} handleMobileToggle={this.handleMobileToggle} />}
           characterData={charData}
+          zonesUnlocked={this.state.zonesUnlocked}
+          beatDifficulty={this.handleBeatDifficulty}
           gameState={this.state.gameState}
           lastArea={this.state.lastArea}
           states={Areas}

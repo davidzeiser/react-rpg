@@ -8,6 +8,7 @@ import DeathWindow from './DeathWindow';
 import MessageLog from '../MessageLog'
 
 export default class MainWindow extends Component {
+
     areas = this.props.states
     render() {
         let content = '';
@@ -34,7 +35,8 @@ export default class MainWindow extends Component {
             />
                 break;
             case this.areas.AREASELECT: content = <AdventureWindow
-            messageLog={<MessageLog />}
+                zonesUnlocked={this.props.zonesUnlocked}
+                messageLog={<MessageLog />}
                 easyButton={() => this.props.changeState(this.areas.BATTLE1)}
                 medButton={() => this.props.changeState(this.areas.BATTLE2)}
                 hardButton={() => this.props.changeState(this.areas.BATTLE3)}
@@ -43,7 +45,8 @@ export default class MainWindow extends Component {
 
             //todo: make these one thing
             case this.areas.BATTLE1: content = <BattleWindow
-            messageLog={<MessageLog />}
+                messageLog={<MessageLog />}
+                beatDifficulty={this.props.beatDifficulty}
                 difficulty={0}
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 updateCharacter={this.props.updateCharacter}
@@ -51,7 +54,8 @@ export default class MainWindow extends Component {
             />
                 break;
             case this.areas.BATTLE2: content = <BattleWindow
-            messageLog={<MessageLog />}
+                messageLog={<MessageLog />}
+                beatDifficulty={this.props.beatDifficulty}                
                 difficulty={1}
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 updateCharacter={this.props.updateCharacter}
@@ -59,16 +63,16 @@ export default class MainWindow extends Component {
             />
                 break;
             case this.areas.BATTLE3: content = <BattleWindow
-            messageLog={<MessageLog />}
+                messageLog={<MessageLog />}
+                beatDifficulty={this.props.beatDifficulty}                
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 difficulty={2}
                 updateCharacter={this.props.updateCharacter}
                 characterData={this.props.characterData}                
             />
-
                 break;
             case this.areas.GAMEOVER: content = <DeathWindow
-            messageLog={<MessageLog />}
+                messageLog={<MessageLog />}
                 restartGame={this.props.restartGame}
             />
                 break;

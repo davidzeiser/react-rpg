@@ -117,11 +117,14 @@ export default class BattleWindow extends Component {
             log.push(`You loot <b>${gold} gold`)
             console.log(constants.Items);
 
+            if(enemy.name == constants.Enemies[this.props.difficulty][constants.Enemies[this.props.difficulty].length -1].name)
+                this.props.beatDifficulty(this.props.difficulty);
+
             const droprates = [20, 5, 1]
 
             for (let i = 0; i < 3; i++) {
                 if (enemy.loot.items[i].length > 0) {
-
+            
                     let droppedItems = enemy.loot.items[i];
                     if ((Math.random() * 100) <= droprates[i]) {
                         const x = getRandomInt(0, droppedItems.length - 1);
@@ -171,10 +174,21 @@ export default class BattleWindow extends Component {
 
     getEnemy = () => {
         let enemies = []
-        constants.Enemies[this.props.difficulty].forEach((enemy,id) => {
+        constants.Enemies[this.props.difficulty].forEach((enemy,id,array) => {
+
+            const levelOffset = (Math.floor(this.state.battlesWon / 3));
             const normalize = (enemy.level - 1) - this.props.difficulty * 5; 
-            if(Math.random() * 100 <= (100 - (normalize * (15 - this.state.battlesWon/(normalize+1)))))
+            
+            if(Math.abs(normalize - levelOffset) <= 1)
                 enemies.push(enemy);
+
+            if(enemies.length == 0 && id == array.length -1)
+                enemies.push(enemy);
+
+
+            // if(Math.random() * 100 <= (100 - (normalize * (15 - this.state.battlesWon/(normalize+1)))))
+            //     enemies.push(enemy);
+            
         });
         console.log(enemies);
         return enemies[getRandomInt(0, enemies.length - 1)]
