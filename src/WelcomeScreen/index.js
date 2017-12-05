@@ -27,6 +27,8 @@ let character = {
   curHealth: 100,
   maxHealth: 100,
   gold: 50,
+  zonesUnlocked: 0,
+  day: 0,
   exp: 0
 }
 
@@ -43,6 +45,8 @@ class WelcomeScreen extends Component {
       curHealth: 100,
       maxHealth: 100,
       gold: 50,
+      zonesUnlocked: 0,
+      day: 0,
       exp: 0
     }
   }

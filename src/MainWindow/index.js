@@ -9,6 +9,12 @@ import MessageLog from '../MessageLog'
 
 export default class MainWindow extends Component {
 
+    handleBeatDifficulty = (diff) => {
+        if(diff+1 > this.state.zonesUnlocked)
+          this.setState({zonesUnlocked:diff+1})
+    
+    }
+
     areas = this.props.states
     render() {
         let content = '';
@@ -18,6 +24,7 @@ export default class MainWindow extends Component {
                 shopButton={() => this.props.changeState(this.areas.SHOP)}
                 innButton={() => this.props.changeState(this.areas.INN)}
                 areaButton={() => this.props.changeState(this.areas.AREASELECT)}
+                characterData={this.props.characterData}
                 lastArea={this.props.lastArea} />
                 break;
             case this.areas.INN: content = <InnWindow
@@ -34,9 +41,9 @@ export default class MainWindow extends Component {
                 characterData={this.props.characterData}
             />
                 break;
-            case this.areas.AREASELECT: content = <AdventureWindow
-                zonesUnlocked={this.props.zonesUnlocked}
+            case this.areas.AREASELECT: content = <AdventureWindow                
                 messageLog={<MessageLog />}
+                characterData={this.props.characterData}
                 easyButton={() => this.props.changeState(this.areas.BATTLE1)}
                 medButton={() => this.props.changeState(this.areas.BATTLE2)}
                 hardButton={() => this.props.changeState(this.areas.BATTLE3)}
@@ -45,8 +52,7 @@ export default class MainWindow extends Component {
 
             //todo: make these one thing
             case this.areas.BATTLE1: content = <BattleWindow
-                messageLog={<MessageLog />}
-                beatDifficulty={this.props.beatDifficulty}
+                messageLog={<MessageLog />}                
                 difficulty={0}
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 updateCharacter={this.props.updateCharacter}
@@ -54,8 +60,7 @@ export default class MainWindow extends Component {
             />
                 break;
             case this.areas.BATTLE2: content = <BattleWindow
-                messageLog={<MessageLog />}
-                beatDifficulty={this.props.beatDifficulty}                
+                messageLog={<MessageLog />}                               
                 difficulty={1}
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 updateCharacter={this.props.updateCharacter}
@@ -63,8 +68,7 @@ export default class MainWindow extends Component {
             />
                 break;
             case this.areas.BATTLE3: content = <BattleWindow
-                messageLog={<MessageLog />}
-                beatDifficulty={this.props.beatDifficulty}                
+                messageLog={<MessageLog />}                               
                 exitButton={() => this.props.changeState(this.areas.TOWN)}
                 difficulty={2}
                 updateCharacter={this.props.updateCharacter}

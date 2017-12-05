@@ -39,13 +39,13 @@ export default class AdventureWindow extends Component {
 
                     <Grid item xs={4} >
 
-                        <Button raised color="primary" onClick={this.props.medButton} disabled={this.props.zonesUnlocked >= 1 ? false : true}>
+                        <Button raised color="primary" onClick={this.props.medButton} disabled={this.props.characterData.zonesUnlocked < 1}>
                             Mountains (hard)
                             </Button>
                     </Grid>
 
                     <Grid item xs={4} >
-                        <Button raised color="primary" onClick={this.props.hardButton} disabled={this.props.zonesUnlocked >= 2 ? false : true}>
+                        <Button raised color="primary" onClick={this.props.hardButton} disabled={this.props.characterData.zonesUnlocked < 2}>
                             Castle (boss)
                             </Button>
                     </Grid>

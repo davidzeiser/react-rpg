@@ -73,7 +73,7 @@ class ShopDialog extends React.Component {
 
                 </DialogContent>
                 <DialogActions>
-                <Button onClick={this.props.handleSellItem} color="primary" autoFocus>
+                <Button onClick={this.props.handleSellItem} color="primary" autoFocus disabled={this.props.characterData.inventory.length < 1}>
                         Sell Items
             </Button>
                     <Button onClick={this.props.handleRequestClose} color="primary" autoFocus>

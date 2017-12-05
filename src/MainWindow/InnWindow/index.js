@@ -27,6 +27,7 @@ export default class InnWindow extends Component {
     handleRest = () => {
         if (this.props.characterData.curHealth === this.props.characterData.maxHealth) {
             log.Messages.push({ text: `You already have full health.` })
+            this.props.updateCharacter(this.props.characterData);
             this.setState({ rested: true })
             return;
         }

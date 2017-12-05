@@ -9,8 +9,10 @@ import Grid from 'material-ui/Grid';
 export default class TownWindow extends Component {
 
     componentWillMount() {
-        if (this.props.lastArea !== 2 && this.props.lastArea !== 1)
+        if (this.props.lastArea !== 2 && this.props.lastArea !== 1) {
             log.Messages.push({ text: `You enter the town of Atrec` })
+            this.props.characterData.day++;
+        }
     }
 
     render() {
@@ -22,7 +24,7 @@ export default class TownWindow extends Component {
             <div>
                 <div className="area">
                     <Typography type="display2">
-                        {name}
+                        {`${name} (Day ${this.props.characterData.day})`}
                     </Typography>
                     <Typography type="title" gutterBottom>
                         {header}

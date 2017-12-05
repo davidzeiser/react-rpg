@@ -117,9 +117,10 @@ export default class BattleWindow extends Component {
             log.push(`You loot <b>${gold} gold`)
             console.log(constants.Items);
 
-            if(enemy.name == constants.Enemies[this.props.difficulty][constants.Enemies[this.props.difficulty].length -1].name)
-                this.props.beatDifficulty(this.props.difficulty);
-
+            if(enemy.name == constants.Enemies[this.props.difficulty][constants.Enemies[this.props.difficulty].length -1].name) {
+                player.zonesUnlocked = Math.max(this.props.difficulty+1,player.zonesUnlocked);
+                console.log("mathmax: " + Math.max(this.props.difficulty,player.zonesUnlocked));
+            }
             const droprates = [20, 5, 1]
 
             for (let i = 0; i < 3; i++) {
