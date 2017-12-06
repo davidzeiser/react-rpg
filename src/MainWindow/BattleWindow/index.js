@@ -32,7 +32,6 @@ export default class BattleWindow extends Component {
 
 
     keepGoing = () => {
-        console.log( this.state.battlesWon);
         this.battleLog = this.getBattleResults(this.getEnemy());        
         log.Messages.push({ text: 'You continue to explore the area.' })
         this.addBattleToMessageLog(this.battleLog);
@@ -71,8 +70,8 @@ export default class BattleWindow extends Component {
         while (plHP > 0 && enHP > 0) {
             //player always attacks first for now
             let damage = 0;
-            if (Math.random() * 100 < 95 - enemy.defense) {
-                //crit
+            if (Math.random() * 100 < 95 - enemy.defense + ((attack[0]+attack[1])/2)) {
+                
                 const crit = Math.random() <= .10;
                 let baseDamage = getRandomInt(attack[0], attack[1]);
                 if (crit)
@@ -80,7 +79,7 @@ export default class BattleWindow extends Component {
                 damage = Math.max(0, baseDamage - enemy.defense)
                 if (damage > 0) {
                     enHP = enHP - damage
-                    log.push(`You ${(crit) ? "CRIT" : "hit"} ${enemy.name} with ${constants.Items[player.equipped[0]].name} for ${damage} damage${(crit) ? "!" : ""}`)
+                    log.push(`You ${(crit) ? "CRIT" : "hit"} ${enemy.name} with ${constants.Items[player.equipped[0]].name} for ${damage} damage${(crit) ? "!" : ""} ${enemy.defense > 0 ? `(-${enemy.defense} blocked)` : ""}`)
                 }
                 else {
                     log.push(`${enemy.name} blocks your attack!`)
@@ -92,7 +91,7 @@ export default class BattleWindow extends Component {
 
             if (enHP <= 0)
                 break;
-            if (Math.random() * 100 < 95 - armor) {
+            if (Math.random() * 100 < 95 /*- armor*/) {
                 damage = Math.max(0, getRandomInt(enemy.attack[0], enemy.attack[1]) - armor)
                 if (damage > 0) {
                     plHP = plHP - damage
@@ -115,12 +114,9 @@ export default class BattleWindow extends Component {
             player.gold += gold;
 
             log.push(`You loot <b>${gold} gold`)
-            console.log(constants.Items);
 
-            if(enemy.name == constants.Enemies[this.props.difficulty][constants.Enemies[this.props.difficulty].length -1].name) {
-                player.zonesUnlocked = Math.max(this.props.difficulty+1,player.zonesUnlocked);
-                console.log("mathmax: " + Math.max(this.props.difficulty,player.zonesUnlocked));
-            }
+           
+            
             const droprates = [20, 5, 1]
 
             for (let i = 0; i < 3; i++) {
@@ -131,38 +127,15 @@ export default class BattleWindow extends Component {
                         const x = getRandomInt(0, droppedItems.length - 1);
                         player.inventory.push(droppedItems[x])
                         log.push(`You found a <b>${constants.Items[droppedItems[x]].name}`)
-                    }
-
-                    // droppedItems.forEach(function (item) {
-                    //     if ((Math.random() * 100) <= droprates[i]) {
-                    //         player.inventory.push(item);
-                    //         log.push(`You found a ${constants.Items[item].name}`)
-                    //     };
-                    // })    
+                    } 
                 }
             }
 
-
-            // 0   {name: "None", price: 0, value: 0, slot: 0}
-            // 1   {name: "Wooden Stick", price: 50, value: Array(2), slot: 0}
-            // 2   {name: "Leather Tunic", price: 50, value: 1, slot: 1}
-            // 3   {name: "Leather Cap", price: 50, value: 1, slot: 2}
-            // 4   {name: "Stone Sword", price: 100, value: Array(2), slot: 0}
-            // 5   {name: "Stone Axe", price: 100, value: Array(2), slot: 0}
-            // 6   {name: "Copper Dagger", price: 200, value: Array(2), slot: 0}
-            // 7   {name: "Copper Cleaver", price: 200, value: Array(2), slot: 0}
-            // 8   {name: "Iron Sword", price: 350, value: Array(2), slot: 0}
-            // 9   {name: "Iron Axe", price: 350, value: Array(2), slot: 0}
-            // 10  {name: "Steel Mace", price: 550, value: Array(2), slot: 0}
-            // 11  {name: "Steel Sword", price: 550, value: Array(2), slot: 0}
-            // 12  {name: "Steel Axe", price: 500, value: Array(2), slot: 0}
-            // 13  {name: "Gold Flail", price: 850, value: Array(2), slot: 0}
-            // 14  {name: "Gold Broadsword", price: 850, value: Array(2), slot: 0}
-            // 15  {name: "Gold Poleaxe", price: 850, value: Array(2), slot: 0}
-
-
-
-
+            if(enemy.name == constants.Enemies[this.props.difficulty][constants.Enemies[this.props.difficulty].length -1].name && player.zonesUnlocked !== 2) 
+            if(player.zonesUnlocked < this.props.difficulty+1) {
+                player.zonesUnlocked = this.props.difficulty+1;
+                log.push(`<b>You have defeated the boss of the ${constants.Areas[4 + this.props.difficulty].name} and unlocked access to the ${constants.Areas[4 + this.props.difficulty+1].name}`)
+            }
         } else {
             log.push(`<b>${enemy.name} has slain ${player.name}!!`)
         }
@@ -191,7 +164,6 @@ export default class BattleWindow extends Component {
             //     enemies.push(enemy);
             
         });
-        console.log(enemies);
         return enemies[getRandomInt(0, enemies.length - 1)]
     }
 

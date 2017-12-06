@@ -26,6 +26,10 @@ const styles = {
     }
 }
 
+const ItemTiers = {
+
+}
+
 class ShopDialog extends React.Component {
 
 
@@ -46,7 +50,9 @@ class ShopDialog extends React.Component {
                     <Grid container spacing={0} elevation={5} className="buttonGrid">
 
                         {constants.Items.map((item, id) =>
-                            (id > 4)
+
+                        
+                            (constants.Shop[this.props.characterData.zonesUnlocked].items.includes(id))
                                 ? (<Grid item xs={12} key={id}>
 
                                     <Button

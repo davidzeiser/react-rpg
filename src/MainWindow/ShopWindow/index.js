@@ -26,6 +26,7 @@ export default class ShopWindow extends Component {
 
     openShop = () => {
         this.setState({shopOpen: true})
+        constants.Items.forEach((item,id) => console.log(`${id} | ${item.name}`))
     }
 
     closeShop = () => {
