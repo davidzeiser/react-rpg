@@ -117,7 +117,7 @@ export default class BattleWindow extends Component {
 
            
             
-            const droprates = [20, 5, 1]
+            const droprates = [26, 8, 2]
 
             for (let i = 0; i < 3; i++) {
                 if (enemy.loot.items[i].length > 0) {

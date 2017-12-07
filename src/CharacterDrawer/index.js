@@ -24,7 +24,8 @@ const drawerWidth = 240;
 
 const styles = theme => ({
     nameText: {
-        paddingLeft: 5
+        paddingLeft: 5,
+        paddingTop: 2
     },
     appBar: {
         position: 'absolute',
@@ -106,7 +107,7 @@ class CharacterDrawer extends Component {
                             <Typography type="headline" gutterBottom className={classes.nameText}>
 
                                 {this.props.characterData.name}
-                                <span style={{ float: 'right' }}>
+                                <span style={{ float: 'right',padding: '2px 4px 0 0' }}>
 
                                     <img src={moneybagIcon} alt="G" className="moneybagIcon" />
 

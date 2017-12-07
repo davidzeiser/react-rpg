@@ -1,5 +1,6 @@
 body{
   margin:0;
+  display:grid;
 }
 
 .area{
@@ -10,10 +11,22 @@ body{
 
 .messageLog { 
   width:100%;
-  height: 62vh;
+  height: calc(88vh - 66px);
   overflow-y: auto;
-  
   text-align: left;
+}
+@media only screen and (max-width: 960px) {
+  .messageLog {
+    height: calc(88vh - 149px);
+  }
+}
+
+.buttonGrid{
+  grid-row-start:2;
+  grid-row-end:3;
+  /* background: #42A5F5; */
+  /* color: white; */
+  /* padding: 20px; */
 }
 
 .buttonGrid > * > Button{

@@ -186,7 +186,7 @@
             "price": 3000,
             "value": [
                 2,
-                7
+                8
             ],
             "slot": 0
         },
@@ -204,7 +204,7 @@
             "price": 3000,
             "value": [
                 1,
-                8
+                9
             ],
             "slot": 0
         },
@@ -384,8 +384,8 @@
                     3,
                     6
                 ],
-                "defense": 1,
-                "health": 8,
+                "defense": 0,
+                "health": 13,
                 "loot": {
                     "gold": [
                         10,
