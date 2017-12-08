@@ -43,7 +43,7 @@ export default class BattleWindow extends Component {
         this.battleLog.map(entry => log.Messages.push({ text: entry }));
     }
 
-    componentWillMount() {
+    componentDidMount() {
         log.Messages.push({ text: constants.Areas[4 + this.props.difficulty].enter })
         this.battleLog = this.getBattleResults(this.getEnemy());
         this.addBattleToMessageLog(this.battleLog);

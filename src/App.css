@@ -60,3 +60,24 @@ body{
   margin-right:4px;
   height:18px;
 }
+
+@keyframes FadeIn { 
+  0% {
+    opacity: 0;
+    transform: scaleY(.1);
+  }
+
+  85% {
+    opacity: 1;
+    transform: scaleY(1.05);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.messageItem {
+  width: 100%;
+  animation: FadeIn 0.2s linear;
+  animation-fill-mode: both;
+}

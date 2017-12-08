@@ -1,8 +1,8 @@
 {
     "Messages": [
         {
-            "text": "Welcome to the game!"
-        
+            "text": "Welcome to the game!",
+            "logged": false
         }
     ]
 }
