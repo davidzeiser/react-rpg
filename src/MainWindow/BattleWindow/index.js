@@ -4,7 +4,6 @@ import constants from '../../constants.json';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import log from '../../log.json';
-
 import Grid from 'material-ui/Grid';
 
 
@@ -32,21 +31,18 @@ export default class BattleWindow extends Component {
 
 
     keepGoing = () => {
-        this.battleLog = this.getBattleResults(this.getEnemy());        
+        const enemy = this.getEnemy()
+        const battleLog = this.getBattleResults(enemy);        
         log.Messages.push({ text: 'You continue to explore the area.' })
-        this.addBattleToMessageLog(this.battleLog);
+        log.Messages.push({ text: battleLog, type: "battle",monster: enemy.name });
         this.props.updateCharacter(this.props.characterData)
-    }
-
-    addBattleToMessageLog = () => {
-        log.Messages.push({ text: '' })
-        this.battleLog.map(entry => log.Messages.push({ text: entry }));
-    }
+    }  
 
     componentDidMount() {
         log.Messages.push({ text: constants.Areas[4 + this.props.difficulty].enter })
-        this.battleLog = this.getBattleResults(this.getEnemy());
-        this.addBattleToMessageLog(this.battleLog);
+        const enemy = this.getEnemy()
+        const battleLog = this.getBattleResults(enemy); 
+        log.Messages.push({ text: battleLog, type: "battle",monster: enemy.name });
         this.props.updateCharacter(this.props.characterData)
     }
     

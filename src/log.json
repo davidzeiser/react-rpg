@@ -2,7 +2,8 @@
     "Messages": [
         {
             "text": "Welcome to the game!",
-            "logged": false
+            "logged": false,
+            "type": "message"
         }
     ]
 }

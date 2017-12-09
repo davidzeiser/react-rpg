@@ -19,7 +19,7 @@ import Badge from 'material-ui/Badge';
 import log from '../log.json';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
-import moneybagIcon from '../imgs/moneybag.svg'
+import moneybagIcon from '../imgs/moneybag.svg';
 
 
 const drawerWidth = 240;
@@ -140,6 +140,8 @@ class MobileHeader extends Component {
                         </Grid>
 
                 </Hidden>
+
+                
             </div>
         );
     }

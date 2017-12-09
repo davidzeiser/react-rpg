@@ -8,7 +8,6 @@ import Drawer from 'material-ui/Drawer';
 import Paper from 'material-ui/Paper';
 import { LinearProgress } from 'material-ui/Progress';
 
-
 import Typography from 'material-ui/Typography';
 import constants from '../constants.json';
 import Divider from 'material-ui/Divider';
@@ -18,7 +17,9 @@ import Badge from 'material-ui/Badge';
 import log from '../log.json';
 import Grid from 'material-ui/Grid';
 
-import moneybagIcon from '../imgs/moneybag.svg'
+import Tooltip from 'material-ui/Tooltip';
+
+import moneybagIcon from '../imgs/moneybag.svg';
 
 const drawerWidth = 240;
 
@@ -107,12 +108,15 @@ class CharacterDrawer extends Component {
                             <Typography type="headline" gutterBottom className={classes.nameText}>
 
                                 {this.props.characterData.name}
-                                <span style={{ float: 'right',padding: '2px 4px 0 0' }}>
+                                <Tooltip id="tooltip-top" title="Gold" placement="left">
+                                
+                                    <span style={{ float: 'right',padding: '2px 4px 0 0' }}>
 
-                                    <img src={moneybagIcon} alt="G" className="moneybagIcon" />
+                                        <img src={moneybagIcon} alt="G" className="moneybagIcon" />
 
-                                    {this.props.characterData.gold}
-                                </span>
+                                        {this.props.characterData.gold}
+                                    </span>
+                                </Tooltip>
                             </Typography>
 
                             <LinearProgress
@@ -134,16 +138,19 @@ class CharacterDrawer extends Component {
 
 
                                 {`${constants.Items[this.props.characterData.equipped[0]].name}`}
-
                             </Typography>
 
                         </Paper>
                     </Grid>
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>
+                        <Tooltip id="tooltip-top" title="Damage" placement="left">
+                            
                             <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
                                 {`${constants.Items[this.props.characterData.equipped[0]].value.join("-")}`}
                             </Typography>
+                            </Tooltip>
+                            
                         </Paper>
                     </Grid>
                     <Grid item xs={9}>
@@ -158,9 +165,11 @@ class CharacterDrawer extends Component {
                     </Grid>
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>
+                        <Tooltip id="tooltip-top" title="Defense" placement="left">
                             <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
                                 {`${constants.Items[this.props.characterData.equipped[1]].value}`}
                             </Typography>
+                            </Tooltip>                            
                         </Paper>
                     </Grid>
                     <Grid item xs={9}>
@@ -175,9 +184,11 @@ class CharacterDrawer extends Component {
                     </Grid>
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>
+                        <Tooltip id="tooltip-top" title="Defense" placement="left">
                             <Typography type="title" gutterBottom className="itemValue" style={{ "lineHeight": "40px" }}>
                                 {`${constants.Items[this.props.characterData.equipped[2]].value}`}
                             </Typography>
+                            </Tooltip>                                                        
                         </Paper>
                     </Grid>
 
@@ -186,19 +197,15 @@ class CharacterDrawer extends Component {
 
 
 
-                <Divider />
-
                 <Paper>
                     <List>
                         {
                             Object.keys(itemList).map((item, id) =>
                                 <Badge badgeContent={itemList[item]} color="primary" key={id} classes={{ root: "inventoryItem" }}>
                                     <ListItem button onClick={() => this.handleEquip(item)} style={{ width: "100%" }}>
-
-                                        <Typography type="title">
-                                            {constants.Items[item].name}
-                                        </Typography>
-
+                                            <Typography type="title">
+                                                {constants.Items[item].name}
+                                            </Typography>
                                     </ListItem>
                                 </Badge>
                             )

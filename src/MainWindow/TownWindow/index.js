@@ -24,7 +24,8 @@ export default class TownWindow extends Component {
             <div>
                 <div className="area">
                     <Typography type="display2">
-                        {`${name} (Day ${this.props.characterData.day})`}
+                        {`${name}`} 
+                        <span className="daySpan">   Day {`${this.props.characterData.day}`}</span>
                     </Typography>
                     <Typography type="title" gutterBottom>
                         {header}

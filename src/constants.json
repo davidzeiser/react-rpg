@@ -290,7 +290,7 @@
     "Enemies": [
         [
             {
-                "name": "Boar",
+                "name": "Skeleton",
                 "level": 1,
                 "attack": [
                     2,
@@ -348,7 +348,7 @@
                 }
             },
             {
-                "name": "Giant Spider",
+                "name": "Boar",
                 "level": 3,
                 "attack": [
                     0,
@@ -378,7 +378,7 @@
                 }
             },
             {
-                "name": "Bear",
+                "name": "Lizardman",
                 "level": 4,
                 "attack": [
                     3,
@@ -408,7 +408,7 @@
                 }
             },
             {
-                "name": "Forest Troll",
+                "name": "Owlbear",
                 "level": 99,
                 "attack": [
                     4,
@@ -440,7 +440,7 @@
         ],
         [
             {
-                "name": "Werewolf",
+                "name": "Orc",
                 "level": 6,
                 "attack": [
                     1,
@@ -470,7 +470,7 @@
                 }
             },
             {
-                "name": "Goblin",
+                "name": "Ogre",
                 "level": 7,
                 "attack": [
                     5,
@@ -499,7 +499,7 @@
                 }
             },
             {
-                "name": "Troll",
+                "name": "Barbarian",
                 "level": 8,
                 "attack": [
                     4,
@@ -530,7 +530,7 @@
                 }
             },
             {
-                "name": "Ogre",
+                "name": "Ogre Gang",
                 "level": 9,
                 "attack": [
                     5,
@@ -561,7 +561,7 @@
                 }
             },
             {
-                "name": "Mountain Giant",
+                "name": "Mountain Troll",
                 "level": 99,
                 "attack": [
                     5,
@@ -594,7 +594,7 @@
         ],
         [
             {
-                "name": "Owlbear",
+                "name": "Skeleton Warrior",
                 "level": 11,
                 "attack": [
                     6,
@@ -623,7 +623,7 @@
                 }
             },
             {
-                "name": "Orc",
+                "name": "Castle Troll",
                 "level": 12,
                 "attack": [
                     7,
@@ -652,7 +652,7 @@
                 }
             },
             {
-                "name": "Skeleton Archer",
+                "name": "Minotaur",
                 "level": 13,
                 "attack": [
                     4,
@@ -684,7 +684,7 @@
                 }
             },
             {
-                "name": "Giant",
+                "name": "Demon",
                 "level": 14,
                 "attack": [
                     5,
